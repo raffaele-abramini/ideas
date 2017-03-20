@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 
 import { addNewIdea } from '../actions/ideas';
 
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+	<div>
+		<label>{label}</label>
+		<div>
+			<input {...input} placeholder={label} type={type}/>
+			{touched && error && <span>{error}</span>}
+		</div>
+	</div>
+)
 
 class AddNewIdeaContainer extends Component{
 	constructor(props){
@@ -14,20 +24,29 @@ class AddNewIdeaContainer extends Component{
 	render(){
 		return <form onSubmit={this.handleSubmit}>
 			<h4>Add new idea</h4>
-			<input
+
+			<Field
+				component={renderField}
 				type="text"
-				placeholder="insert content"
+				name="content"
+				label="insert content"
+				validate={[value => value && value.length > 3 ? undefined : 'Too short']}
 				ref={node => this.content = node}/>
+			<button type="submit" disabled={this.props.pristine || this.props.pristine}>Submit</button>
 		</form>
 	}
 
-	handleSubmit(e){
+	handleSubmit(e, values){
 		e.preventDefault();
-		if(!this.content.value.trim()) return;
+		if(!this.props.valid) return;
 
 		this.props.addNewIdea(this.content.value.trim());
-		this.content.value= null;
+		this.props.reset();
 	}
 }
 
-export default connect(null, {addNewIdea})(AddNewIdeaContainer);
+const reduxFormDecorator = reduxForm({
+		form: 'add-new'
+})(AddNewIdeaContainer);
+
+export default connect(null, {addNewIdea})(reduxFormDecorator);
