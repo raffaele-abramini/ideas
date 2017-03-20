@@ -1,18 +1,30 @@
-export const ADD_NEW_IDEA = 'ADD_NEW_IDEA';
+import db from '../lib/db';
+const Idea = db.ref('ideas');
+export const FETCH_IDEAS = 'FETCH_IDEAS';
 export const UPDATE_IDEA = 'UPDATE_IDEA';
-let ideaId = 0;
 
-export function addNewIdea(content) {
-	return {
-		type: ADD_NEW_IDEA,
-		id: ideaId++,
-		content
-	}
+export function fetchIdeas() {
+	return dispatch => Idea.on('value', (snapshot)=>{
+		dispatch({
+			type: FETCH_IDEAS,
+			payload: snapshot.val()
+		})
+	})
 }
 
-export function toggleIdea(id) {
-	return {
-		type: UPDATE_IDEA,
-		id
-	}
+
+export function addNewIdea(content) {
+	return dispatch => Idea.push({
+		content,
+		isCompleted: false
+	})
+}
+
+export function deleteIdea(key) {
+	return dispatch => Idea.child(key).remove();
+}
+
+
+export function toggleIdea(key, previousState) {
+	return dispatch => Idea.child(key).update({isCompleted: !previousState});
 }

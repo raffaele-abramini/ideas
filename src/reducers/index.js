@@ -1,4 +1,3 @@
-import {  } from 'react-redux';
 import { combineReducers } from 'redux';
 import ideas from './ideas';
 import  {reducer as formReducer } from 'redux-form';

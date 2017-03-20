@@ -1,36 +1,52 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames'
 
-const IdeasList = ({ideas, handleUpdateClick}) => {
-	return <div>
-		<h3 onClick={()=>dispatch(addNewIdea())}>Ideas</h3>
-		<ul>
-			{ideas.length
-				? ideas.map((idea, index)=>{
-					let classes =  classnames({
-						'idea' : true,
-						'is-completed' : idea.isCompleted
-					});
-					return <li
-						className={classes}
-						key={index}
-						onClick={handleUpdateClick.bind(null, idea.id)}>
+class IdeasList extends Component {
+	constructor(props){
+		super(props)
+	}
+
+	componentWillMount(){
+		this.props.fetchIdeas();
+	}
+
+	render(){
+		return <div>
+			<h3>Ideas</h3>
+			<ul>
+				{Object.keys(this.props.ideas).length
+					? Object.keys(this.props.ideas).map((key)=>{
+						let idea = this.props.ideas[key];
+						let classes =  classnames({
+							'idea' : true,
+							'is-completed' : idea.isCompleted
+						});
+						return <li
+							className={classes}
+							key={key}
+						//	onClick={this.props.handleUpdateClick.bind(this, idea.id)}
+						>
 							{idea.content}
+
+							<button onClick={this.props.handleUpdateClick.bind(this, key, idea.isCompleted)}>toggle complete</button>
+							<button onClick={this.props.handleDeleteClick.bind(this, key)}>delete</button>
 						</li>
-				})
-				: <div>no ideas yet</div>
-			}
-		</ul>
-	</div>
-};
+					})
+					: <div>no ideas yet</div>
+				}
+			</ul>
+		</div>
+	}
+}
 
 IdeasList.propTypes = {
-	ideas: PropTypes.arrayOf( PropTypes.shape({
-		id: PropTypes.number.isRequired,
+	ideas: PropTypes.objectOf( PropTypes.shape({
 		isCompleted: PropTypes.bool.isRequired,
 		content: PropTypes.string.isRequired
 	}).isRequired).isRequired,
-	handleUpdateClick : PropTypes.func.isRequired
+	fetchIdeas : PropTypes.func.isRequired,
+	handleUpdateClick : PropTypes.func.isRequired,
+	handleDeleteClick : PropTypes.func.isRequired
 };
 
 export default IdeasList;

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import IdeasList from '../components/IdeasList';
 
-import { toggleIdea } from '../actions/ideas';
+import { fetchIdeas, toggleIdea, deleteIdea } from '../actions/ideas';
 
 function mapStateToProps({ideas}){
 	return {
@@ -12,6 +12,8 @@ function mapStateToProps({ideas}){
 
 
 const mapDispatchToProps = {
+	fetchIdeas,
+	handleDeleteClick: deleteIdea,
 	handleUpdateClick : toggleIdea
 };
 
