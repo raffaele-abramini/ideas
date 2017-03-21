@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import ideas from './ideas';
-import  {reducer as formReducer } from 'redux-form';
+import reducerIdeas from './reducer-ideas';
+import reducerActiveIdea from './reducer-active-idea';
+import {reducer as formReducer } from 'redux-form';
 
 
 export default combineReducers({
-	ideas,
+	ideas: reducerIdeas,
+	activeIdea: reducerActiveIdea,
 	form: formReducer
 });

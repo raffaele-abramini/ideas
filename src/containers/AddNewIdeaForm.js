@@ -6,16 +6,6 @@ import config from '../config';
 
 import { addNewIdea } from '../actions/ideas';
 
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
-	<div>
-		<label>{label}</label>
-		<div>
-			<input {...input} placeholder={label} type={type}/>
-			{touched && error && <span>{error}</span>}
-		</div>
-	</div>
-);
-
 class AddNewIdeaContainer extends Component{
 	constructor(props){
 		super(props);
@@ -37,22 +27,36 @@ class AddNewIdeaContainer extends Component{
 		return <form onSubmit={this.handleSubmit}>
 			<h4>Add new idea</h4>
 
-			<Field
-				component={renderField}
-				type="text"
-				name="content"
-				label="insert content"
-				validate={[value => value && value.length > 3 ? undefined : 'Too short']}
-				ref={node => this.content = node}/>
-			<button type="submit" disabled={this.props.pristine || this.props.pristine}>Submit</button>
+			<div>
+				<Field
+					component='input'
+					type="text"
+					name="title"
+					placeholder="insert title"
+					validate={[value => value && value.length > 3 ? undefined : 'Too short']}
+					ref={node => this.title = node}
+				/>
+			</div>
+
+			<div>
+				<Field
+					component='textarea'
+					name="content"
+					placeholder="insert content"
+					validate={[value => value && value.length > 3 ? undefined : 'Too short']}
+					ref={node => this.content = node}
+				/>
+			</div>
+
+			<button type="submit" disabled={this.props.pristine || !this.props.valid}>Submit</button>
 		</form>
 	}
 
-	handleSubmit(e, values){
+	handleSubmit(e){
 		e.preventDefault();
 		if(!this.props.valid) return;
 
-		this.props.addNewIdea(this.content.value.trim());
+		this.props.addNewIdea(this.title.value.trim(), this.content.value.trim());
 		this.props.reset();
 		this.setState({formSubmitted:true});
 	}

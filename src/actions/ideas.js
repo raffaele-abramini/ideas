@@ -13,8 +13,9 @@ export function fetchIdeas() {
 }
 
 
-export function addNewIdea(content) {
+export function addNewIdea(title, content) {
 	return dispatch => Idea.push({
+		title,
 		content,
 		isCompleted: false
 	})

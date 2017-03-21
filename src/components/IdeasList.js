@@ -27,7 +27,7 @@ class IdeasList extends Component {
 							className={classes}
 							key={key}
 						>
-							{idea.content}
+							<Link to={config.routes.viewIdea(key)}>{idea.title}</Link>
 
 							<button onClick={this.props.handleUpdateClick.bind(this, key, idea.isCompleted)}>toggle complete</button>
 							<button onClick={this.props.handleDeleteClick.bind(this, key)}>delete</button>
@@ -47,7 +47,8 @@ class IdeasList extends Component {
 IdeasList.propTypes = {
 	ideas: PropTypes.objectOf( PropTypes.shape({
 		isCompleted: PropTypes.bool.isRequired,
-		content: PropTypes.string.isRequired
+		content: PropTypes.string.isRequired,
+		title: PropTypes.string.isRequired
 	}).isRequired).isRequired,
 	fetchIdeas : PropTypes.func.isRequired,
 	handleUpdateClick : PropTypes.func.isRequired,
