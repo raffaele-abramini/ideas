@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames'
+import { Link } from 'react-router-dom';
+import config from '../config'
 
 class IdeasList extends Component {
 	constructor(props){
@@ -24,7 +26,6 @@ class IdeasList extends Component {
 						return <li
 							className={classes}
 							key={key}
-						//	onClick={this.props.handleUpdateClick.bind(this, idea.id)}
 						>
 							{idea.content}
 
@@ -35,6 +36,10 @@ class IdeasList extends Component {
 					: <div>no ideas yet</div>
 				}
 			</ul>
+
+			<Link to={config.routes.addNewIdea}>
+				Add new
+			</Link>
 		</div>
 	}
 }

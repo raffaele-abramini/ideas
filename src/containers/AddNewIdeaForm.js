@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { Redirect } from 'react-router';
+import config from '../config';
 
 import { addNewIdea } from '../actions/ideas';
 
@@ -12,16 +14,26 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 			{touched && error && <span>{error}</span>}
 		</div>
 	</div>
-)
+);
 
 class AddNewIdeaContainer extends Component{
 	constructor(props){
 		super(props);
 
+		this.state = {
+			formSubmitted: false
+		};
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	render(){
+		if (this.state.formSubmitted) {
+			return (
+				<Redirect to={config.routes.index}/>
+			)
+		}
+
 		return <form onSubmit={this.handleSubmit}>
 			<h4>Add new idea</h4>
 
@@ -42,6 +54,7 @@ class AddNewIdeaContainer extends Component{
 
 		this.props.addNewIdea(this.content.value.trim());
 		this.props.reset();
+		this.setState({formSubmitted:true});
 	}
 }
 
