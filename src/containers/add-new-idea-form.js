@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router';
 import config from '../config';
 
-import { addNewIdea } from '../actions/ideas';
+import { addNewIdea } from '../actions/actions-ideas';
 
 class AddNewIdeaContainer extends Component{
 	constructor(props){

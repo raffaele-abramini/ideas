@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import IdeasList from '../components/IdeasList';
+import IdeasList from '../components/ideas-list';
 
-import { fetchIdeas, toggleIdea, deleteIdea } from '../actions/ideas';
+import { fetchIdeas, toggleIdea, deleteIdea } from '../actions/actions-ideas';
 
 function mapStateToProps({ideas}){
 	return {

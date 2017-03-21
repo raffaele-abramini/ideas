@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import IdeasListContainer from '../containers/IdeasListContainer'
-import AddNewIdeaForm from '../containers/AddNewIdeaForm'
-import IdeaViewContainer from '../containers/IdeaViewContainer'
-import IdeaViewfrom from '../components/IdeasList'
 import config from '../config'
+
+import IdeasListContainer from '../containers/ideas-list-container'
+import AddNewIdeaForm from '../containers/add-new-idea-form'
+import IdeaViewContainer from '../containers/idea-view-container'
 
 export default ({children})=>{
 	return <BrowserRouter>

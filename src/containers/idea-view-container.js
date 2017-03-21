@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {setActiveIdea, unsetActiveIdea} from '../actions/actions-active-idea';
-import IdeaView from '../components/IdeaView';
+import IdeaView from '../components/idea-view';
 
 function mapStateToProps(state) {
 	return {

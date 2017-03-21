@@ -1,4 +1,4 @@
-import { FETCH_IDEAS } from '../actions/ideas';
+import { FETCH_IDEAS } from '../actions/actions-ideas';
 
 const defaultValue = {};
 
