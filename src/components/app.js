@@ -10,9 +10,11 @@ export default ({children})=>{
 	return <BrowserRouter>
 		<div className="app-container">
 			<h1>My app</h1>
+			<Switch>
 				<Route exact path={config.routes.index} component={IdeasListContainer} />
 				<Route exact path={config.routes.addNewIdea} component={AddNewIdeaForm} />
 				<Route exact path={config.routes.viewIdea()} component={IdeaViewContainer} />
+			</Switch>
 		</div>
 	</BrowserRouter>
 }
