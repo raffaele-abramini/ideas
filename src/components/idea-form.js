@@ -93,12 +93,12 @@ class IdeaForm extends Component {
 
 	handleSubmit({title, content, sections=[]}){
 
-		const formattedSections = sections.map(section=>{
+		sections = sections.map(section=>{
 			section.isCompleted = !!section.isCompleted;
 			return section;
 		});
 
-		this.props.formAction(title, content, formattedSections);
+		this.props.formAction({title, content, sections});
 		this.props.reset();
 		this.setState({formSubmitted:true});
 	}

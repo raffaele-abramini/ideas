@@ -18,7 +18,7 @@ class AddNewIdeaContainer extends Component{
 
 	render(){
 		return <IdeaForm
-			redirectTo={config.routes.index}
+			redirectTo={config.routes.viewIdea(this.props.match.params.id)}
 			formAction={this.props.updateIdea.bind(this, this.props.match.params.id)}
 			formTitle={'Edit idea'}
 			initialValues={this.props.initialValues}

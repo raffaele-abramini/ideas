@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {setActiveIdea, unsetActiveIdea} from '../actions/actions-active-idea';
+import {setActiveIdea, unsetActiveIdea, updateActiveIdea} from '../actions/actions-active-idea';
+import { updateIdea } from '../actions/actions-ideas';
 import IdeaView from '../components/idea-view';
 
 function mapStateToProps(state) {
@@ -11,13 +12,16 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
 	fetchIdea : setActiveIdea,
-	unsetActiveIdea
+	unsetActiveIdea,
+	updateActiveIdea,
+	updateIdea
 };
 
 
 class IdeaViewContainer extends Component {
 	componentWillMount(){
 		this.props.fetchIdea(this.props.match.params.id);
+		this.updateIdeaSections = this.updateIdeaSections.bind(this);
 	}
 	componentWillUnmount(){
 		this.props.unsetActiveIdea();
@@ -27,7 +31,14 @@ class IdeaViewContainer extends Component {
 		if(!idea) {
 			return <div>loading</div>
 		}
-		return <IdeaView idea={idea} id={match.params.id} />
+		return <IdeaView
+			idea={idea}
+			id={match.params.id}
+			updateIdeaSections={this.updateIdeaSections} />
+	}
+	updateIdeaSections(sections){
+		this.props.updateActiveIdea({sections});
+		this.props.updateIdea(this.props.match.params.id, {sections});
 	}
 }
 
