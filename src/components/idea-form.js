@@ -1,7 +1,35 @@
 import React, { Component, PropTypes } from 'react';
 
-import { Field, reduxForm } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router';
+
+const SubFieldsHolder = ({fields=[]}) => {
+	console.log(fields);
+
+	return <div className="subFields">
+		<button type="button" onClick={() => {
+			fields.push({});
+			console.log(fields);
+		}}>Add section</button>
+		{fields.map((section, index) => {
+			return	<div key={index}>
+				<Field
+					component='input'
+					type="text"
+					name={`${section}.title`}
+					placeholder="insert title"
+					validate={[value => value && value.length > 3 ? undefined : 'Too short']}
+				/>
+				<Field
+					component='textarea'
+					name={`${section}.content`}
+					placeholder="insert content"
+					validate={[value => value && value.length > 3 ? undefined : 'Too short']}
+				/>
+			</div>
+		})}
+	</div>
+};
 
 class IdeaForm extends Component {
 	static propTypes = {
@@ -29,7 +57,7 @@ class IdeaForm extends Component {
 
 		const {formTitle} = this.props;
 
-		return <form onSubmit={this.handleSubmit}>
+		return <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
 			<h4>{formTitle}</h4>
 			<div>
 				<Field
@@ -52,23 +80,25 @@ class IdeaForm extends Component {
 				/>
 			</div>
 
+			<div>
+				<h5>Sections</h5>
+				<FieldArray name="sections"
+							component={SubFieldsHolder}>
+				</FieldArray>
+			</div>
+
 			<button type="submit" disabled={this.props.pristine || !this.props.valid}>Submit</button>
 		</form>
 	}
 
-	handleSubmit(e){
-		e.preventDefault();
-		if(!this.props.valid) return;
+	handleSubmit({title, content, sections=[]}){
 
-		// const {activeIdea, match} = this.props;
+		const formattedSections = sections.map(section=>{
+			section.isCompleted = !!section.isCompleted;
+			return section;
+		});
 
-		this.props.formAction(this.title.value.trim(), this.content.value.trim());
-		//
-		// if(activeIdea) {
-		// 	this.props.updateIdea(this.title.value.trim(), this.content.value.trim(),match.params.id);
-		// } else {
-		// 	this.props.addNewIdea(this.title.value.trim(), this.content.value.trim());
-		// }
+		this.props.formAction(title, content, formattedSections);
 		this.props.reset();
 		this.setState({formSubmitted:true});
 	}

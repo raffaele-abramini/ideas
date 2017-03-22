@@ -13,10 +13,11 @@ export function fetchIdeas() {
 }
 
 
-export function addNewIdea(title, content) {
+export function addNewIdea(title, content, sections = []) {
 	return dispatch => Idea.push({
 		title,
 		content,
+		sections,
 		isCompleted: false
 	})
 }
@@ -30,11 +31,13 @@ export function toggleIdea(key, previousState) {
 	return dispatch => Idea.child(key).update({isCompleted: !previousState});
 }
 
-export function updateIdea(key, title, content) {
-	const propsToUpdate = {};
-
-	if(title) propsToUpdate.title = title;
-	if(content) propsToUpdate.content = content;
+export function updateIdea(key, title, content, sections) {
+	console.log(sections);
+	const propsToUpdate = {
+		title,
+		content,
+		sections
+	};
 
 	return dispatch => Idea.child(key).update(propsToUpdate);
 }

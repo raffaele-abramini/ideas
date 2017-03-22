@@ -45,10 +45,15 @@ class IdeasList extends Component {
 }
 
 IdeasList.propTypes = {
-	ideas: PropTypes.objectOf( PropTypes.shape({
+	ideas: PropTypes.objectOf(PropTypes.shape({
+		title: PropTypes.string.isRequired,
+		content: PropTypes.string,
 		isCompleted: PropTypes.bool.isRequired,
-		content: PropTypes.string.isRequired,
-		title: PropTypes.string.isRequired
+		sections: PropTypes.arrayOf(PropTypes.shape({
+			title: PropTypes.string.isRequired,
+			content: PropTypes.string,
+			isCompleted: PropTypes.bool.isRequired,
+		}).isRequired)
 	}).isRequired).isRequired,
 	fetchIdeas : PropTypes.func.isRequired,
 	handleUpdateClick : PropTypes.func.isRequired,
