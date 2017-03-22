@@ -4,13 +4,12 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router';
 
 const SubFieldsHolder = ({fields=[]}) => {
-	console.log(fields);
 
 	return <div className="subFields">
 		<button type="button" onClick={() => {
 			fields.push({});
-			console.log(fields);
 		}}>Add section</button>
+
 		{fields.map((section, index) => {
 			return	<div key={index}>
 				<Field

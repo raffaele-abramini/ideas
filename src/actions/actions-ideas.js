@@ -13,7 +13,7 @@ export function fetchIdeas() {
 }
 
 
-export function addNewIdea(title, content, sections = []) {
+export function addNewIdea({title, content, sections = []}) {
 	return dispatch => Idea.push({
 		title,
 		content,
