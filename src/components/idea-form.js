@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react';
+
 import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router';
-import config from '../config';
 
-import { addNewIdea } from '../actions/actions-ideas';
+class IdeaForm extends Component {
+	static propTypes = {
+		formAction : PropTypes.func.isRequired,
+		formTitle : PropTypes.string.isRequired,
+		redirectTo: PropTypes.string.isRequired
+	};
 
-class AddNewIdeaContainer extends Component{
 	constructor(props){
 		super(props);
 
@@ -20,13 +23,14 @@ class AddNewIdeaContainer extends Component{
 	render(){
 		if (this.state.formSubmitted) {
 			return (
-				<Redirect to={config.routes.index}/>
+				<Redirect to={this.props.redirectTo}/>
 			)
 		}
 
-		return <form onSubmit={this.handleSubmit}>
-			<h4>Add new idea</h4>
+		const {formTitle} = this.props;
 
+		return <form onSubmit={this.handleSubmit}>
+			<h4>{formTitle}</h4>
 			<div>
 				<Field
 					component='input'
@@ -56,14 +60,18 @@ class AddNewIdeaContainer extends Component{
 		e.preventDefault();
 		if(!this.props.valid) return;
 
-		this.props.addNewIdea(this.title.value.trim(), this.content.value.trim());
+		// const {activeIdea, match} = this.props;
+
+		this.props.formAction(this.title.value.trim(), this.content.value.trim());
+		//
+		// if(activeIdea) {
+		// 	this.props.updateIdea(this.title.value.trim(), this.content.value.trim(),match.params.id);
+		// } else {
+		// 	this.props.addNewIdea(this.title.value.trim(), this.content.value.trim());
+		// }
 		this.props.reset();
 		this.setState({formSubmitted:true});
 	}
 }
 
-const reduxFormDecorator = reduxForm({
-		form: 'add-new'
-})(AddNewIdeaContainer);
-
-export default connect(null, {addNewIdea})(reduxFormDecorator);
+export default reduxForm({form: 'idea-form'})(IdeaForm);

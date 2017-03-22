@@ -23,11 +23,11 @@ class IdeaViewContainer extends Component {
 		this.props.unsetActiveIdea();
 	}
 	render(){
-		const {idea} = this.props;
+		const {idea, match} = this.props;
 		if(!idea) {
 			return <div>loading</div>
 		}
-		return <IdeaView idea={idea} />
+		return <IdeaView idea={idea} id={match.params.id} />
 	}
 }
 
