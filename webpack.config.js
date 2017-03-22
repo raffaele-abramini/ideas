@@ -6,7 +6,8 @@ module.exports = {
 		'./src/styles/style.scss'
 	],
 	output: {
-		filename: './dist/bundle.js'
+		path: __dirname + "/public/dist",
+		filename: 'bundle.js'
 	},
 	module : {
 		rules : [
@@ -35,12 +36,12 @@ module.exports = {
 		]
 	},
 	plugins : [
-		new ExtractTextPlugin('./dist/style.css')
+		new ExtractTextPlugin('./style.css')
 	],
 	devServer: {
 		historyApiFallback: true,
 		host: "0.0.0.0",
-		contentBase: './'
+		contentBase: './public/'
 	},
 	devtool: 'source-map'
 };
