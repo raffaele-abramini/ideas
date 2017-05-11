@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {setActiveIdea, unsetActiveIdea, updateActiveIdea} from '../actions/actions-active-idea';
 import { updateIdea } from '../actions/actions-ideas';
-import IdeaView from '../components/idea-view';
+import IdeaView from '../views/idea-view';
 
 function mapStateToProps(state) {
 	return {

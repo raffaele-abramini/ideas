@@ -7,9 +7,12 @@ import AddIdeaForm from './containers/add-idea-form'
 import IdeaViewContainer from './containers/idea-view-container'
 import EditIdeaForm from './containers/edit-idea-form'
 
+import Header from './components/header/header';
+
+
 export default ()=>{
 	return <div className="app-container">
-			<h1>My app</h1>
+			<Header/>
 			<Switch>
 				<Route exact path={config.routes.index} component={IdeasListContainer} />
 				<Route exact path={config.routes.addNewIdea} component={AddIdeaForm} />

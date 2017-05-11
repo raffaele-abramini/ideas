@@ -22,19 +22,20 @@ export default ({idea: {title, content, sections}, updateIdeaSections, id})=>{
 		</li>
 	};
 
-	return <div>
-		<hr/>
-		<h2>{title}</h2>
+	return (
+		<div>
+			<h2>{title}</h2>
 
-		<p>
-			{content}
-		</p>
+			<p>
+				{content}
+			</p>
 
-		<ul>
-			{sections.map(renderSection)}
-		</ul>
+			<ul>
+				{sections.map(renderSection)}
+			</ul>
 
-		<Link to={config.routes.index}>Back</Link>
-		<Link to={config.routes.editIdea(id)}>Edit</Link>
-	</div>
+			<Link to={config.routes.index}>Back</Link>
+			<Link to={config.routes.editIdea(id)}>Edit</Link>
+		</div>
+	)
 }

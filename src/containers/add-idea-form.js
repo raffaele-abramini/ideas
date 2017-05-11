@@ -2,7 +2,7 @@ import React  from 'react';
 import { connect } from 'react-redux';
 import config from '../config';
 
-import IdeaForm from '../components/idea-form'
+import IdeaForm from '../views/idea-form'
 
 import { addNewIdea } from '../actions/actions-ideas';
 
