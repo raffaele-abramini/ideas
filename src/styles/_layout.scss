@@ -1,3 +1,10 @@
 .container {
 	padding: 0 1rem;
+	position: relative;
+
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
 }
