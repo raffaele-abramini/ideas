@@ -4,19 +4,18 @@ import cl from 'classnames';
 import {Link} from 'react-router-dom';
 import config from '../../config';
 
-const IdeaListItem = ({isCompleted, title, key, handleUpdateClick, handleDeleteClick})=>{
+const IdeaListItem = ({isCompleted, title, id, handleUpdateClick, handleDeleteClick})=>{
 	let classes =  cl({
 		'idea' : true,
 		'is-completed' : isCompleted
 	});
 	return (
 		<li
-			className={classes}
-			key={key}>
-			<Link to={config.routes.viewIdea(key)}>{title}</Link>
+			className={classes}>
+			<Link to={config.routes.viewIdea(id)}>{title}</Link>
 
-			<button onClick={handleUpdateClick.bind(this, key, isCompleted)}>toggle complete</button>
-			<button onClick={handleDeleteClick.bind(this, key)}>delete</button>
+			<button onClick={handleUpdateClick.bind(this, id, isCompleted)}>toggle complete</button>
+			<button onClick={handleDeleteClick.bind(this, id)}>delete</button>
 		</li>
 	)
 };

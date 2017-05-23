@@ -12,7 +12,7 @@ const MainList = (props)=>{
 		<ul className={mainList.list}>
 			{Object.keys(props.ideas).length
 				? Object.keys(props.ideas).map((key)=>(
-					<IdeaListItem {...props.ideas[key]}
+					<IdeaListItem key={key} id={key} {...props.ideas[key]}
 								  handleUpdateClick={props.handleUpdateClick}
 								  handleDeleteClick={props.handleDeleteClick}/>
 				))
