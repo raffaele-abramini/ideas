@@ -25,4 +25,37 @@
 		opacity: 0;
 		transition: opacity 250ms ease-in;
 	}
+
+
+
+
+
+	.slide-up {
+		&-enter {
+			> * {
+				opacity: 0;
+				transform: translateY(100%);
+			}
+		}
+		&-enter-active {
+			> * {
+				opacity: 1;
+				transform: translateY(0);
+				transition: transform 250ms, opacity 250ms;
+			}
+		}
+		&-leave {
+			> * {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+		&-leave-active {
+			> * {
+				opacity: 0;
+				transform: translateY(100%);
+				transition: transform 250ms, opacity 250ms;
+			}
+		}
+	}
 }

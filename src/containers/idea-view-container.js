@@ -33,7 +33,7 @@ class IdeaViewContainer extends Component {
 	}
 	render(){
 		const {idea, match} = this.props;
-		if(!idea) return <div>123</div>;
+		if(!idea) return <div>no idea in the view container</div>;
 		return <div>
 			{idea && (
 				<IdeaView

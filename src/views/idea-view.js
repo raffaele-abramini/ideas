@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import classnames from 'classnames';
+import overlay from '../components/overlay/overlay';
 
 import config from '../config';
 
-export default ({idea: {title, content, sections}, updateIdeaSections, id})=>{
+const IdeaView = ({idea: {title, content, sections}, updateIdeaSections, id})=>{
 	const updateSection = (sectionIndex)=>{
 		sections[sectionIndex].isCompleted = !sections[sectionIndex].isCompleted;
 		updateIdeaSections(sections);
@@ -38,4 +39,6 @@ export default ({idea: {title, content, sections}, updateIdeaSections, id})=>{
 			<Link to={config.routes.editIdea(id)}>Edit</Link>
 		</div>
 	)
-}
+};
+
+export default overlay(IdeaView);

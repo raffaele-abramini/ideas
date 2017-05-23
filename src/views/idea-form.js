@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router';
+import overlay from '../components/overlay/overlay';
+
 
 const SubFieldsHolder = ({fields=[]}) => {
 
@@ -104,4 +106,4 @@ class IdeaForm extends Component {
 	}
 }
 
-export default reduxForm({form: 'idea-form'})(IdeaForm);
+export default reduxForm({form: 'idea-form'})(overlay(IdeaForm));

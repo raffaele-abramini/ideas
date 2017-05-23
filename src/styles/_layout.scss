@@ -1,10 +1,18 @@
 .container {
-	padding: 0 1rem;
+	padding: 1rem 1rem;
 	position: relative;
+	flex: 1 1 auto;
 
 	&:after {
 		content: "";
 		display: table;
 		clear: both;
 	}
+}
+
+
+.body {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }

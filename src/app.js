@@ -12,16 +12,18 @@ import Header from './components/header/header';
 import layout from './styles/_layout.scss';
 import './styles/_transitions.scss';
 
+
 export default withRouter(({history})=>{
-	return <div className="app-container">
+	return <div className={layout.body}>
 			<Header/>
 			<div className={layout.container}>
+				<Route path={config.routes.index} component={IdeasList} />
+
 				<CssTransition
-					transitionName="fade"
+					transitionName="slide-up"
 					transitionEnterTimeout={250}
 					transitionLeaveTimeout={250}>
 					<Switch location={history.location} key={history.location.key}>
-						<Route exact path={config.routes.index} component={IdeasList} />
 						<Route path={config.routes.addNewIdea} component={AddIdeaForm} />
 						<Route path={config.routes.viewIdea()} component={IdeaView} />
 						<Route path={config.routes.editIdea()} component={EditIdeaForm} />
