@@ -1,0 +1,17 @@
+.button {
+	padding: .5rem .75rem;
+	box-shadow: none;
+	background: none;
+	border-radius: 3px;
+	border: 1px solid currentColor;
+	color: darkslateblue;
+	text-decoration: none;
+	display: inline-block;
+	transition: background .2s;
+
+	margin-top:2rem;
+
+	&:hover {
+		background: rgba(darkslateblue, .15);
+	}
+}

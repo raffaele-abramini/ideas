@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import { Link } from 'react-router-dom';
 import config from '../config'
 import MainList from '../containers/main-list-container';
+import button from '../styles/_button.scss';
 
 class IdeasList extends Component {
 	constructor(props){
@@ -18,7 +19,9 @@ class IdeasList extends Component {
 		return <div>
 			<MainList/>
 
-			<Link to={config.routes.addNewIdea}>
+			<Link
+				to={config.routes.addNewIdea}
+				className={button.button}>
 				Add new
 			</Link>
 		</div>
