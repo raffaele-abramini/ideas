@@ -14,23 +14,26 @@ const IdeaListItem = ({isCompleted, title, id, handleUpdateClick, handleDeleteCl
 		<li
 			className={classes}>
 			<Link
-				className={ideaListItem.title}
+				className={ideaListItem.link}
 				to={config.routes.viewIdea(id)}>
-				{title}
-			</Link>
+				<h2
+					className={ideaListItem.title}>
+					{title}
+				</h2>
 
-			<div className={ideaListItem.buttons}>
-				<button
-					className={cl(ideaListItem.button, ideaListItem.first)}
-					onClick={handleUpdateClick.bind(this, id, isCompleted)}>
-					toggle complete
-				</button>
-				<button
-					className={cl(ideaListItem.button, ideaListItem.second)}
-					onClick={handleDeleteClick.bind(this, id)}>
-					delete
-				</button>
-			</div>
+				<div className={ideaListItem.buttons}>
+					<button
+						className={cl(ideaListItem.button, ideaListItem.first)}
+						onClick={e => {e.preventDefault(); handleUpdateClick(id, isCompleted)}}>
+						toggle complete
+					</button>
+					<button
+						className={cl(ideaListItem.button, ideaListItem.second)}
+						onClick={e => {e.preventDefault(); handleDeleteClick(id)}}>
+						delete
+					</button>
+				</div>
+			</Link>
 		</li>
 	)
 };
