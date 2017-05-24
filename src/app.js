@@ -8,7 +8,7 @@ import AddIdeaForm from './containers/add-idea-form'
 import IdeaView from './containers/idea-view-container'
 import EditIdeaForm from './containers/edit-idea-form'
 
-import Header from './components/header/header';
+import Header from './containers/header-container';
 import layout from './styles/_layout.scss';
 import './styles/_transitions.scss';
 
