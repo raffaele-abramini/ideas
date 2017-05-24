@@ -17,6 +17,11 @@
 	color: #fff;
 }
 
+
+.filter {
+	margin: 0 0 0 -10%;
+}
+
 .button {
 	background: none;
 	border: none;
@@ -24,9 +29,6 @@
 	color: #fff;
 	cursor: pointer;
 	font-weight: normal;
-}
-
-
-.filter {
-	margin: 0;
+	font-size: 11px;
+	text-transform: uppercase;
 }

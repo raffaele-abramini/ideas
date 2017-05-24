@@ -14,10 +14,12 @@
 
 	&.isCompleted {
 		opacity: .6;
-		background: #EAFFEB;
+		background: rgba(slateblue, .2);
 		transform: scale(.95);
 	}
 }
+
+
 .link {
 	display: flex;
 	flex-direction: column;

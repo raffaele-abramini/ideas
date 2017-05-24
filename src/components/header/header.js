@@ -16,7 +16,7 @@ const Header = ({hideCompletedIdeas, toggleCompletedIdeas})=>{
 					className={cl(header.button, button.withIcon)}
 					onClick={toggleCompletedIdeas}>
 					<svg className={icon.icon}>
-						<use xlinkHref={hideCompletedIdeas? '#checkbox-checked' : '#checkbox-unchecked'}/>
+						<use xlinkHref={hideCompletedIdeas? '#toggle-on' : '#toggle-off'}/>
 					</svg>
 
 					Hide completed
