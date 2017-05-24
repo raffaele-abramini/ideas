@@ -19,7 +19,7 @@
 
 
 .filter {
-	margin: 0 0 0 -10%;
+	margin: 0;
 }
 
 .button {
@@ -31,4 +31,9 @@
 	font-weight: normal;
 	font-size: 11px;
 	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.buttonPrimary {
+	font-size:13px;
 }
