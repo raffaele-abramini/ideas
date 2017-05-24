@@ -15,11 +15,13 @@
 	right: 0;
 	bottom: 0;
 	z-index: 10;
+	border-radius: 3px;
 }
 
 .inner {
 	max-height: 80vh;
 	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
 	margin: auto;
 	width: 100%;
 	padding:2rem;
@@ -40,4 +42,5 @@
 	position: absolute;
 	top: 2rem;
 	right: 2rem;
+	height: auto;
 }

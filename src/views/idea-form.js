@@ -58,7 +58,6 @@ class IdeaForm extends Component {
 						name="content"
 						className={field.textarea}
 						placeholder="Content here"
-						validate={[value => value && value.length > 3 ? undefined : 'Too short']}
 						ref={node => this.content = node}
 					/>
 				</div>
@@ -126,7 +125,6 @@ const SubFieldsHolder = ({fields=[]}) => {
 								name={`${section}.content`}
 								className={field.textarea}
 								placeholder="Section content here"
-								validate={[value => value && value.length > 3 ? undefined : 'Too short']}
 							/>
 						</div>
 					</div>

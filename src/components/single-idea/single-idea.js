@@ -6,18 +6,26 @@ import idea from './single-idea.scss';
 import button from '../../styles/_button.scss';
 import Section from '../idea-section/idea-section';
 
-const SingleIdea = ({title, content, sections, id, updateIdeaSections})=>{
+const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections})=>{
 	const updateSection = (sectionIndex)=>{
 		sections[sectionIndex].isCompleted = !sections[sectionIndex].isCompleted;
 		updateIdeaSections(sections);
 	};
-    return (
+	const date = new Date(timestamp);
+
+	return (
         <div className={idea.idea}>
 			<h2 className={idea.title}>{title}</h2>
 
-			<div className={idea.content}>
+			<time className={idea.date}>
+				{`${date.getHours()}:${date.getMinutes()} `}
+				{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
+			</time>
+
+
+			<p className={idea.content}>
 				{content}
-			</div>
+			</p>
 
 			<ul className={idea.sections}>
 				{sections && sections.map((section,index) => (
@@ -31,10 +39,11 @@ const SingleIdea = ({title, content, sections, id, updateIdeaSections})=>{
 			<nav className={idea.nav}>
 				<Link
 					className={button.button}
-					to={config.routes.index}>Back</Link>
+					to={config.routes.editIdea(id)}>Edit</Link>
+
 				<Link
 					className={button.button}
-					to={config.routes.editIdea(id)}>Edit</Link>
+					to={config.routes.index}>Close</Link>
 			</nav>
 		</div>
     )
