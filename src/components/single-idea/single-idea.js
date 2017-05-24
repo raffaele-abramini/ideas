@@ -19,7 +19,7 @@ const SingleIdea = ({title, content, sections, id, updateIdeaSections})=>{
 				{content}
 			</p>
 
-			<ul>
+			<ul className={idea.sections}>
 				{sections && sections.map((section,index) => (
 					<Section key={index}
 							 {...section}

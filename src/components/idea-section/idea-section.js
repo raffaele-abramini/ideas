@@ -2,16 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cl from 'classnames';
 
+import section from './idea-section.scss';
+import button from '../../styles/_button.scss';
+
 const IdeaSection = ({title, content, index, isCompleted, updateSection})=>{
-	const classes = cl({
+	const classes = cl(section.section, {
 		'is-completed' : isCompleted
 	});
 
 	return (
 		<li key={index} className={classes}>
-			<h4>{title}</h4>
+			<h4 className={section.title}>{title}</h4>
 			<p>{content}</p>
-			<button onClick={()=>updateSection(index)}>click</button>
+			<button
+				className={cl(button.vanilla, section.button)}
+				onClick={()=>updateSection(index)}>
+				Toggle completed
+			</button>
 		</li>
 	)
 };

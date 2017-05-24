@@ -13,3 +13,19 @@
 		background: rgba(darkslateblue, .15);
 	}
 }
+
+.vanilla {
+	color: darkslateblue;
+	background: none;
+	box-shadow: none;
+	border: none;
+	padding: 0;
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size: .75rem;
+	cursor: pointer;
+
+	&:hover {
+		color: slateblue;
+	}
+}

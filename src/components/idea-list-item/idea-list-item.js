@@ -4,6 +4,7 @@ import cl from 'classnames';
 import {Link} from 'react-router-dom';
 import config from '../../config';
 import ideaListItem from './idea-list-item.scss';
+import button from '../../styles/_button.scss';
 
 const IdeaListItem = ({isCompleted, title, id, handleUpdateClick, handleDeleteClick})=>{
 	let classes =  cl({
@@ -23,12 +24,12 @@ const IdeaListItem = ({isCompleted, title, id, handleUpdateClick, handleDeleteCl
 
 				<div className={ideaListItem.buttons}>
 					<button
-						className={cl(ideaListItem.button, ideaListItem.first)}
+						className={cl(button.vanilla)}
 						onClick={e => {e.preventDefault(); handleUpdateClick(id, isCompleted)}}>
 						toggle complete
 					</button>
 					<button
-						className={cl(ideaListItem.button, ideaListItem.second)}
+						className={cl(button.vanilla)}
 						onClick={e => {e.preventDefault(); handleDeleteClick(id)}}>
 						delete
 					</button>
