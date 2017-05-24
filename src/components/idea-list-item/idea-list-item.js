@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import config from '../../config';
 import ideaListItem from './idea-list-item.scss';
 import button from '../../styles/_button.scss';
+import icon from '../../styles/_icon.scss';
 
 const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick})=>{
 	let classes =  cl({
@@ -12,6 +13,10 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 		[ideaListItem.isCompleted] : isCompleted
 	});
 	const date = new Date(timestamp);
+	const confirmationForDelete = (e)=>{
+		e && e.preventDefault();
+		if(window.confirm('Delete this idea?')) handleDeleteClick(id);
+	};
 	return (
 		<li
 			className={classes}>
@@ -30,14 +35,20 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 
 				<div className={ideaListItem.buttons}>
 					<button
-						className={cl(button.vanilla)}
+						className={cl(button.vanilla, button.withIcon)}
 						onClick={e => {e.preventDefault(); handleUpdateClick(id, isCompleted)}}>
-						toggle complete
+						<svg className={icon.icon}>
+							<use xlinkHref={isCompleted ? '#checkbox-checked' : '#checkbox-unchecked'}/>
+						</svg>
+
+						completed
 					</button>
 					<button
-						className={cl(button.vanilla)}
-						onClick={e => {e.preventDefault(); handleDeleteClick(id)}}>
-						delete
+						className={cl(button.vanilla, button.withIcon)}
+						onClick={confirmationForDelete}>
+						<svg className={icon.icon}>
+							<use xlinkHref='#bin'/>
+						</svg>
 					</button>
 				</div>
 			</Link>

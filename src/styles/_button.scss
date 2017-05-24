@@ -29,3 +29,19 @@
 		color: slateblue;
 	}
 }
+
+.withIcon {
+	display: flex;
+	align-items: center;
+
+	svg {
+		font-size: 20px;
+		margin-right: 5px;
+	}
+}
+
+button {
+	&:focus {
+		outline: none;
+	}
+}

@@ -4,6 +4,7 @@ import cl from 'classnames';
 
 import section from './idea-section.scss';
 import button from '../../styles/_button.scss';
+import icon from '../../styles/_icon.scss';
 
 const IdeaSection = ({title, content, index, isCompleted, updateSection})=>{
 	const classes = cl(section.section, {
@@ -15,9 +16,13 @@ const IdeaSection = ({title, content, index, isCompleted, updateSection})=>{
 			<h4 className={section.title}>{title}</h4>
 			<p>{content}</p>
 			<button
-				className={cl(button.vanilla, section.button)}
+				className={cl(button.vanilla, button.withIcon, section.button)}
 				onClick={()=>updateSection(index)}>
-				Toggle completed
+
+				<svg className={icon.icon}>
+					<use xlinkHref={isCompleted ? '#checkbox-checked' : '#checkbox-unchecked'}/>
+				</svg>
+				Completed
 			</button>
 		</li>
 	)
