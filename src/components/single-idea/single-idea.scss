@@ -1,0 +1,26 @@
+.idea {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.title {
+	font-size:50px;
+	padding-top: 1rem;
+	margin-bottom: 3rem;
+}
+
+.content {
+	margin-top: 0;
+	margin-bottom: 2rem;
+}
+
+.sections {
+
+}
+
+.nav {
+	margin-top: auto;
+	display: flex;
+	justify-content: space-between;
+}
