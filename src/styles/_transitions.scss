@@ -34,7 +34,7 @@
 		&-enter {
 			> * {
 				opacity: 0;
-				transform: translateY(100%);
+				transform: translateY(50%);
 			}
 		}
 		&-enter-active {
@@ -53,7 +53,7 @@
 		&-leave-active {
 			> * {
 				opacity: 0;
-				transform: translateY(100%);
+				transform: translateY(-50%);
 				transition: transform 250ms, opacity 250ms;
 			}
 		}

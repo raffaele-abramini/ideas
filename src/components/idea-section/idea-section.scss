@@ -2,6 +2,16 @@
 	background: #f1f1f1;
 	padding: 1rem;
 	margin-bottom: 1rem;
+	border-radius: 5px;
+	transition: transform .5s, background .5s, opacity .5s;
+	backface-visibility: hidden;
+	transform-origin: 100% 50%;
+
+	&.isCompleted {
+		opacity: .6;
+		background: #EAFFEB;
+		transform: rotate3d(0, 1, 0, 360deg);
+	}
 }
 
 .title {

@@ -6,7 +6,9 @@ import overlay from './overlay.scss';
 const Overlay= (Component)=>{
 	return (props)=>(
 		<div className={overlay.overlay}>
-			<Component {...props} />
+			<div className={overlay.inner}>
+				<Component {...props} />
+			</div>
 		</div>
 	)
 };

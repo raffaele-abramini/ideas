@@ -1,16 +1,24 @@
 .overlay {
 	position: absolute;
-	overflow: scroll;
-	left: 2rem;
-	right: 2rem;
+	left: 0;
+	right: 0;
 	top: 1.5rem;
 	bottom: 1rem;
-	box-shadow: 0 3px 10px rgba(black, .3), 0 0 0 100vh rgba(black, .2);
-	padding: 2rem 2rem;
-	max-height: 80vh;
+	box-shadow: 0 0 0 100vh rgba(black, .2), 0 0 0 100vh rgba(black, .2) inset;
 
 	z-index: 10;
+}
+
+.inner {
+	max-height: 80vh;
+	overflow: scroll;
+	margin: auto;
+	width: 100%;
+	padding:2rem;
+	max-width: 640px;
 	background: #fff;
+	box-shadow: 0 3px 10px rgba(black, .3);
+
 
 	> * {
 		height: 100%;

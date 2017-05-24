@@ -7,7 +7,7 @@ import button from '../../styles/_button.scss';
 
 const IdeaSection = ({title, content, index, isCompleted, updateSection})=>{
 	const classes = cl(section.section, {
-		'is-completed' : isCompleted
+		[section.isCompleted] : isCompleted
 	});
 
 	return (
