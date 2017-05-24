@@ -6,11 +6,12 @@ import config from '../../config';
 import ideaListItem from './idea-list-item.scss';
 import button from '../../styles/_button.scss';
 
-const IdeaListItem = ({isCompleted, title, id, handleUpdateClick, handleDeleteClick})=>{
+const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick})=>{
 	let classes =  cl({
 		[ideaListItem.item]	 : true,
 		[ideaListItem.isCompleted] : isCompleted
 	});
+	const date = new Date(timestamp);
 	return (
 		<li
 			className={classes}>
@@ -21,6 +22,11 @@ const IdeaListItem = ({isCompleted, title, id, handleUpdateClick, handleDeleteCl
 					className={ideaListItem.title}>
 					{title}
 				</h2>
+
+				<time className={ideaListItem.date}>
+					{`${date.getHours()}:${date.getMinutes()} `}
+					{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
+				</time>
 
 				<div className={ideaListItem.buttons}>
 					<button
@@ -43,6 +49,7 @@ IdeaListItem.propTypes = {
 	title: PropTypes.string.isRequired,
 	content: PropTypes.string,
 	isCompleted: PropTypes.bool.isRequired,
+	timestamp: PropTypes.string.isRequired,
 	sections: PropTypes.arrayOf(PropTypes.shape({
 		title: PropTypes.string.isRequired,
 		content: PropTypes.string,

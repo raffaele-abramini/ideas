@@ -1,11 +1,19 @@
 .overlay {
-	position: absolute;
+	&:before {
+		content: " ";
+		background: rgba(black, .2);
+		position: fixed;
+		top: -100vh;
+		bottom: -100vh;
+		left: 0;
+		right: 0;
+	}
+
+	position: fixed;
+	top: 0;
 	left: 0;
 	right: 0;
-	top: 1.5rem;
-	bottom: 1rem;
-	box-shadow: 0 0 0 100vh rgba(black, .2), 0 0 0 100vh rgba(black, .2) inset;
-
+	bottom: 0;
 	z-index: 10;
 }
 
@@ -17,10 +25,19 @@
 	padding:2rem;
 	max-width: 640px;
 	background: #fff;
+	top: 50%;
+	transform: translateY(-50%);
+	position: relative;
 	box-shadow: 0 3px 10px rgba(black, .3);
 
 
 	> * {
 		height: 100%;
 	}
+}
+
+.close {
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
 }

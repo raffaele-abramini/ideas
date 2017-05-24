@@ -18,6 +18,7 @@ export function addNewIdea({title, content, sections = []}) {
 		title,
 		content,
 		sections,
+		timestamp: new Date().toISOString(),
 		isCompleted: false
 	})
 }

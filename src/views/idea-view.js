@@ -6,11 +6,9 @@ import SingleIdea from '../components/single-idea/single-idea';
 
 const IdeaView = ({idea, ...props})=>{
 	return (
-		<div>
-			<SingleIdea
-				{...idea}
-				{...props} />
-		</div>
+		<SingleIdea
+			{...idea}
+			{...props} />
 	)
 };
 

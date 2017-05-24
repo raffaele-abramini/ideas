@@ -34,14 +34,16 @@ class IdeaViewContainer extends Component {
 	render(){
 		const {idea, match} = this.props;
 		if(!idea) return <div>no idea in the view container</div>;
-		return <div>
-			{idea && (
-				<IdeaView
-					idea={idea}
-					id={match.params.id}
-					updateIdeaSections={this.updateIdeaSections} />
-			)}
-		</div>
+		return (
+			<div>
+				{idea && (
+					<IdeaView
+						idea={idea}
+						id={match.params.id}
+						updateIdeaSections={this.updateIdeaSections} />
+				)}
+			</div>
+		)
 	}
 	updateIdeaSections(sections){
 		this.props.updateActiveIdea({sections});
