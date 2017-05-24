@@ -7,22 +7,22 @@ import IdeaForm from '../views/idea-form'
 import { updateIdea } from '../actions/actions-ideas';
 import { setActiveIdea, unsetActiveIdea } from '../actions/actions-active-idea';
 
-class AddNewIdeaContainer extends Component{
+class EditIdeaContainer extends Component{
 	componentWillMount(){
-		this.props.setActiveIdea(this.props.match.params.id)
-	}
-
-	componentWillUnmount(){
-		this.props.unsetActiveIdea()
+		this.props.setActiveIdea(this.props.match.params.id);
 	}
 
 	render(){
-		return <IdeaForm
-			redirectTo={config.routes.viewIdea(this.props.match.params.id)}
-			formAction={this.props.updateIdea.bind(this, this.props.match.params.id)}
-			formTitle={'Edit idea'}
-			initialValues={this.props.initialValues}
-		/>
+		return (
+			<div>
+				<IdeaForm
+					redirectTo={config.routes.viewIdea(this.props.match.params.id)}
+					formAction={this.props.updateIdea.bind(this, this.props.match.params.id)}
+					formTitle={'Edit idea'}
+					initialValues={this.props.initialValues}
+				/>
+			</div>
+		)
 	}
 
 }
@@ -34,4 +34,4 @@ function mapStateToProps({activeIdea}){
 	}
 }
 
-export default connect(mapStateToProps, {updateIdea, setActiveIdea, unsetActiveIdea})(AddNewIdeaContainer);
+export default connect(mapStateToProps, {updateIdea, setActiveIdea, unsetActiveIdea})(EditIdeaContainer);

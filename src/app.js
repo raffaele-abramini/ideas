@@ -25,8 +25,8 @@ export default withRouter(({history})=>{
 					transitionLeaveTimeout={250}>
 					<Switch location={history.location} key={history.location.key}>
 						<Route path={config.routes.addNewIdea} component={AddIdeaForm} />
-						<Route path={config.routes.viewIdea()} component={IdeaView} />
-						<Route path={config.routes.editIdea()} component={EditIdeaForm} />
+						<Route exact path={config.routes.viewIdea()} component={IdeaView} />
+						<Route exact path={config.routes.editIdea()} component={EditIdeaForm} />
 					</Switch>
 				</CssTransition>
 			</div>
