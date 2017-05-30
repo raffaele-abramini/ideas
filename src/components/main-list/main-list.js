@@ -42,6 +42,9 @@ const MainList = (props)=>{
 						</Link>
 					</div>
 					}
+
+
+					<button onClick={()=>props.logOut()}>logout</button>
 		</div>
     )
 };

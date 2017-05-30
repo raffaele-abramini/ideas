@@ -1,6 +1,7 @@
-import {LOGIN, LOGOUT, AUTH_ERROR} from '../actions/actions-auth'
+import {LOGIN, LOGOUT, AUTH_ERROR, HANDLE_AUTH} from '../actions/actions-auth'
 const initialValue= {
 	authed: false,
+	userID: '',
 	error: ''
 }
 
@@ -12,6 +13,8 @@ export default (state=initialValue, action)=>{
 			return {...state, authed: false}
 		case AUTH_ERROR:
 			return {...state, error: action.payload}
+		case HANDLE_AUTH:
+			return {error: '', authed: !!action.payload, userID: action.payload || ''}
 	}
 
 	return state
