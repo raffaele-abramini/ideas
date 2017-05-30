@@ -18,8 +18,14 @@
 }
 
 
-.filter {
+.nav {
 	margin: 0;
+	flex: 1 0 0;
+}
+
+.navRight {
+	display: flex;
+	justify-content: flex-end;
 }
 
 .button {

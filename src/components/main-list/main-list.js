@@ -6,6 +6,7 @@ import IdeaListItem from '../idea-list-item/idea-list-item';
 
 import mainList from './main-list.scss';
 import info from '../../styles/_info-panel.scss';
+import layout from '../../styles/_layout.scss';
 
 import config from '../../config'
 import button from '../../styles/_button.scss';
@@ -19,8 +20,7 @@ const MainList = (props)=>{
 		? Object.keys(props.ideas).reduce(filterIdea, {})
 		: props.ideas;
     return (
-		<div>
-			{Object.keys(ideas).length
+			Object.keys(ideas).length
 				? <ul className={mainList.list}>
 					{Object.keys(ideas).map((key)=>(
 						<IdeaListItem key={key} id={key} {...ideas[key]}
@@ -28,24 +28,19 @@ const MainList = (props)=>{
 									  handleDeleteClick={props.handleDeleteClick}/>
 					))}
 					</ul>
-					: <div className={cl(info.info)}>
-						<div className={cl(info.content)}>
-							{props.hideCompletedIdeas
-								? 'Well done, no uncompleted ideas!'
-								: 'Waiting for you first idea!'}
-						</div>
-
-						<Link
-							to={config.routes.addNewIdea}
-							className={button.button}>
-							Add new
-						</Link>
+				: <div className={cl(info.info, layout.centralColumn)}>
+					<div className={cl(info.content)}>
+						{props.hideCompletedIdeas
+							? 'Well done, no uncompleted ideas!'
+							: 'Waiting for you first idea!'}
 					</div>
-					}
 
-
-					<button onClick={()=>props.logOut()}>logout</button>
-		</div>
+					<Link
+						to={config.routes.addNewIdea}
+						className={button.button}>
+						Add new
+					</Link>
+				</div>
     )
 };
 

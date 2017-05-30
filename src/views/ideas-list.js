@@ -10,6 +10,8 @@ import AddIdeaForm from '../containers/add-idea-form'
 import IdeaView from '../containers/idea-view-container'
 import EditIdeaForm from '../containers/edit-idea-form'
 
+import layout from '../styles/_layout.scss';
+
 class IdeasList extends Component {
 	constructor(props){
 		super(props)
@@ -21,7 +23,7 @@ class IdeasList extends Component {
 
 	render(){
 		const {history} = this.props;
-		return <div>
+		return <div className={layout.innerContainer}>
 			<MainList/>
 
 			<CssTransition
