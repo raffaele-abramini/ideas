@@ -1,21 +1,25 @@
 import React  from 'react';
 import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
+
 import config from '../config';
 
-import IdeaForm from '../views/idea-form'
+import overlay from '../components/overlay/overlay';
+import IdeaForm from '../components/idea-form/idea-form'
 
 import { addNewIdea } from '../actions/actions-ideas';
 
-const AddNewIdeaContainer = ({addNewIdea})=> {
+const AddNewIdeaContainer = ({addNewIdea, ...props})=> {
 	return (
-		<div>
-			<IdeaForm
-				redirectTo={config.routes.index}
-				formAction={addNewIdea}
-				formTitle={'Add new idea'}
-			/>
-		</div>
+		<IdeaForm
+			{...props}
+			redirectTo={config.routes.index}
+			formAction={addNewIdea}
+			formTitle={'Add new idea'}
+		/>
 	)
 };
 
-export default connect(null, {addNewIdea})(AddNewIdeaContainer);
+export default connect(null, {addNewIdea})(
+	reduxForm({form: 'idea-form'})(overlay(AddNewIdeaContainer))
+);

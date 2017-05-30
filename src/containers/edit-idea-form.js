@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import config from '../config';
 
-import IdeaForm from '../views/idea-form'
+import IdeaForm from '../components/idea-form/idea-form'
 
 import { updateIdea } from '../actions/actions-ideas';
 import { setActiveIdea, unsetActiveIdea } from '../actions/actions-active-idea';
+
+
+import { reduxForm } from 'redux-form';
+import overlay from '../components/overlay/overlay';
 
 class EditIdeaContainer extends Component{
 	componentWillMount(){
@@ -14,14 +18,13 @@ class EditIdeaContainer extends Component{
 
 	render(){
 		return (
-			<div>
-				<IdeaForm
-					redirectTo={config.routes.viewIdea(this.props.match.params.id)}
-					formAction={this.props.updateIdea.bind(this, this.props.match.params.id)}
-					formTitle={'Edit idea'}
-					initialValues={this.props.initialValues}
-				/>
-			</div>
+			<IdeaForm
+				{...this.props}
+				redirectTo={config.routes.viewIdea(this.props.match.params.id)}
+				formAction={this.props.updateIdea.bind(this, this.props.match.params.id)}
+				formTitle={'Edit idea'}
+				initialValues={this.props.initialValues}
+			/>
 		)
 	}
 
@@ -34,4 +37,7 @@ function mapStateToProps({activeIdea}){
 	}
 }
 
-export default connect(mapStateToProps, {updateIdea, setActiveIdea, unsetActiveIdea})(EditIdeaContainer);
+
+export default connect(mapStateToProps, {updateIdea, setActiveIdea, unsetActiveIdea})(
+	reduxForm({form: 'idea-form'})(overlay(EditIdeaContainer))
+);

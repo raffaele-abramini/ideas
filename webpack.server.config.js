@@ -26,8 +26,17 @@ module.exports = {
 
 	module: {
 		loaders: [
-			{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-2' }
+			{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-2' },
+			{
+				test: /\.scss$/,
+				use: ExtractTextPlugin.extract({
+					use: ["css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]", "sass-loader"]
+				})
+			},
 		]
-	}
+	},
 
+	plugins : [
+		new ExtractTextPlugin('./style.css')
+	]
 }

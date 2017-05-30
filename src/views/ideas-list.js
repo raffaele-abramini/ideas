@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames'
 import { Route, Switch, withRouter } from 'react-router-dom';
 import config from '../config'
 
 import MainList from '../containers/main-list-container';
 import CssTransition from 'react-addons-css-transition-group';
-import AddIdeaForm from '../containers/add-idea-form'
+import AddIdeaView from '../views/add-idea-view'
+import EditIdeaView from '../views/edit-idea-view'
 import IdeaView from '../containers/idea-view-container'
-import EditIdeaForm from '../containers/edit-idea-form'
 
 import layout from '../styles/_layout.scss';
 
@@ -31,9 +30,9 @@ class IdeasList extends Component {
 				transitionEnterTimeout={250}
 				transitionLeaveTimeout={250}>
 				<Switch location={history.location} key={history.location.key}>
-					<Route exact path={config.routes.addNewIdea} component={AddIdeaForm} />
+					<Route exact path={config.routes.addNewIdea} component={AddIdeaView} />
 					<Route exact path={config.routes.viewIdea()} component={IdeaView} />
-					<Route exact path={config.routes.editIdea()} component={EditIdeaForm} />
+					<Route exact path={config.routes.editIdea()} component={EditIdeaView} />
 				</Switch>
 			</CssTransition>
 		</div>

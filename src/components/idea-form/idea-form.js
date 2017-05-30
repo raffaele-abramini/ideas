@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cl from 'classnames';
-
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { Field, FieldArray } from 'redux-form';
 import { Redirect } from 'react-router';
-import field from '../styles/_field.scss';
-import button from '../styles/_button.scss';
-import overlay from '../components/overlay/overlay';
 
+import field from '../../styles/_field.scss';
+import button from '../../styles/_button.scss';
 
 class IdeaForm extends Component {
 	static propTypes = {
@@ -142,4 +140,5 @@ const SubFieldsHolder = ({fields=[]}) => {
 	)
 };
 
-export default reduxForm({form: 'idea-form'})(overlay(IdeaForm));
+
+export default IdeaForm;
