@@ -6,6 +6,7 @@ import { Redirect } from 'react-router';
 
 import field from '../../styles/_field.scss';
 import button from '../../styles/_button.scss';
+import icon from '../../styles/_icon.scss';
 
 class IdeaForm extends Component {
 	static propTypes = {
@@ -98,7 +99,7 @@ class IdeaForm extends Component {
 
 const SubFieldsHolder = ({fields=[]}) => {
 	return (
-		<div className="subFields">
+		<div className={field.subFields}>
 			{fields.map((section, index) => {
 				return	(
 					<div
@@ -110,7 +111,7 @@ const SubFieldsHolder = ({fields=[]}) => {
 								component='input'
 								type="text"
 								name={`${section}.title`}
-								className={field.input}
+								className={cl(field.input, field.inputSubtitle)}
 								placeholder="Section title here"
 								validate={[value => value && value.length > 3 ? undefined : 'Too short']}
 							/>
@@ -124,6 +125,13 @@ const SubFieldsHolder = ({fields=[]}) => {
 								className={field.textarea}
 								placeholder="Section content here"
 							/>
+						</div>
+
+						<div className={field.deleteSectionButton}
+							onClick={()=>fields.remove(index)}>
+							<svg className={icon.icon}>
+								<use xlinkHref="#bin"/>
+							</svg>
 						</div>
 					</div>
 				)

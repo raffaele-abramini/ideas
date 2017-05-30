@@ -4,6 +4,7 @@
 
 .section {
 	margin-top:2rem;
+	position: relative;
 }
 
 .title {
@@ -41,8 +42,29 @@
 		font-size: 30px;
 		font-weight: bold;
 	}
+
+	&.inputSubtitle {
+		font-weight: bold;
+	}
 }
 
 .textarea {
 	height: 4rem;
+}
+
+.subFields {
+	padding-right: 2rem;
+}
+
+.deleteSectionButton {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: -1.8rem;
+	color: #999;
+	cursor: pointer;
+	
+	&:hover {
+		color: #333;
+	}
 }
