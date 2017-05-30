@@ -1,10 +1,12 @@
-import {db} from '../lib/firebase';
-const Idea = db.ref('ideas');
+import {db, auth} from '../lib/firebase';
 export const FETCH_IDEAS = 'FETCH_IDEAS';
-export const UPDATE_IDEA = 'UPDATE_IDEA';
+
+const Idea = () => {
+	return db.ref(`ideas/${auth().currentUser.uid}`)
+};
 
 export function fetchIdeas() {
-	return dispatch => Idea.on('value', (snapshot)=>{
+	return dispatch => Idea().on('value', (snapshot)=>{
 		dispatch({
 			type: FETCH_IDEAS,
 			payload: snapshot.val()
@@ -14,7 +16,7 @@ export function fetchIdeas() {
 
 
 export function addNewIdea({title, content, sections = []}) {
-	return dispatch => Idea.push({
+	return dispatch => Idea().push({
 		title,
 		content,
 		sections,
@@ -24,12 +26,12 @@ export function addNewIdea({title, content, sections = []}) {
 }
 
 export function deleteIdea(key) {
-	return dispatch => Idea.child(key).remove();
+	return dispatch => Idea().child(key).remove();
 }
 
 
 export function toggleIdea(key, previousState) {
-	return dispatch => Idea.child(key).update({isCompleted: !previousState});
+	return dispatch => Idea().child(key).update({isCompleted: !previousState});
 }
 
 export function updateIdea(key, {title, content, sections}) {
@@ -39,5 +41,5 @@ export function updateIdea(key, {title, content, sections}) {
 	if(content) propsToUpdate.content = content;
 	if(sections) propsToUpdate.sections = sections;
 
-	return dispatch => Idea.child(key).update(propsToUpdate);
+	return dispatch => Idea().child(key).update(propsToUpdate);
 }

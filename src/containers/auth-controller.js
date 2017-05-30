@@ -7,11 +7,7 @@ import {connect} from 'react-redux';
 class AuthController extends Component {
 	componentWillMount(){
 		auth().onAuthStateChanged((user) => {
-			if (user) {
-				this.props.handleAuth(user)
-			} else {
-				this.props.handleAuth(false)
-			}
+			this.props.handleAuth(user)
 		});
 	}
 
