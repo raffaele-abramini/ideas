@@ -4,7 +4,7 @@ import MainList from '../components/main-list/main-list';
 
 import { fetchIdeas, toggleIdea, deleteIdea } from '../actions/actions-ideas';
 
-function mapStateToProps({ideas, app:{hideCompletedIdeas}}){
+function mapStateToProps({ideas, list:{hideCompletedIdeas}}){
 	return {
 		ideas,
 		hideCompletedIdeas

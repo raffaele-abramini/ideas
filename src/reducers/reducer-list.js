@@ -1,4 +1,4 @@
-import {TOGGLE_COMPLETED_IDEAS} from '../actions/actions-app';
+import {TOGGLE_COMPLETED_IDEAS} from '../actions/actions-list';
 
 const initialState = {
 	hideCompletedIdeas : false

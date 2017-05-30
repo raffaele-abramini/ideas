@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 import Header from '../components/header/header';
-import {toggleCompletedIdeas} from '../actions/actions-app';
+import {toggleCompletedIdeas} from '../actions/actions-list';
 
 
-function mapStateToProps(state){
+function mapStateToProps({list}){
 	return {
-		hideCompletedIdeas: state.app.hideCompletedIdeas
+		hideCompletedIdeas: list.hideCompletedIdeas
 	}
 }
 
