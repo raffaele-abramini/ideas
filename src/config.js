@@ -3,6 +3,8 @@ export default {
 		index: '/',
 		addNewIdea: '/ideas/new',
 		viewIdea: (id =':id') =>`/ideas/${id}`,
-		editIdea: (id =':id') =>`/ideas/${id}/edit`
+		editIdea: (id =':id') =>`/ideas/${id}/edit`,
+		login: `/login`,
+		signup: `/signup`
 	}
 }

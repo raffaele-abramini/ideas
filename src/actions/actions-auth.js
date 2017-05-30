@@ -3,6 +3,7 @@ export const LOGOUT = 'LOGOUT';
 
 
 export const logIn = ()=> {
+	console.log('login');
 	return {
 		type:LOGIN
 	}

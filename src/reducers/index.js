@@ -10,5 +10,6 @@ export default combineReducers({
 	ideas: reducerIdeas,
 	activeIdea: reducerActiveIdea,
 	form: formReducer,
-	list : reducerList
+	list : reducerList,
+	auth: reducerAuth
 });

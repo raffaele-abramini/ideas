@@ -1,4 +1,4 @@
-import db from '../lib/db';
+import {db} from '../lib/firebase';
 const Idea = db.ref('ideas');
 export const FETCH_IDEAS = 'FETCH_IDEAS';
 export const UPDATE_IDEA = 'UPDATE_IDEA';

@@ -1,4 +1,4 @@
-import db from '../lib/db';
+import {db} from '../lib/firebase';
 
 export const SET_ACTIVE_IDEA = 'SET_ACTIVE_IDEA';
 export const UPDATE_ACTIVE_IDEA = 'UPDATE_ACTIVE_IDEA';
