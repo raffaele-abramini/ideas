@@ -6,19 +6,17 @@ body {
 h1,h2,h3,h4,h5 {
 	font-family: 'Poppins', Helvetica, sans-serif;
 	font-weight: 900;
+	margin-top: 0;
 }
 
 .is-completed {
 	text-decoration: line-through;
 }
 p {
+	margin-top: 0;
 	line-height: 1.5;
 }
 
 .idea {
 	cursor: pointer;
-}
-
-:first-child {
-	margin-top: 0 !important;
 }
