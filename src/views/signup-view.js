@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SignupForm from '../containers/signup-form';
+import SignupForm from '../containers/signup-form-container';
+import layout from '../styles/_layout.scss';
 
 const SignupView = ({})=>{
     return (
-		<SignupForm/>
+		<div className={layout.centralColumn}>
+			<SignupForm/>
+		</div>
     )
 };
 

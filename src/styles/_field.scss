@@ -81,3 +81,14 @@
 	margin-top: 6px;
 	font-weight: bold;
 }
+
+
+.authError {
+	color: darkred;
+	font-size: 13px;
+	padding: 1rem;
+	background: #f1f1f1;
+	margin-bottom: 1.5rem;
+	line-height: 1.5;
+	border-left: 2px solid;
+}

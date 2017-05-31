@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import field from '../../styles/_field.scss';
 
 const InputWithValidation = ({meta: {touched, error}, input, className, ...etc})=>{
+
 	const classes = cl(className, {
 		[field.isInvalid] : error && touched
 	});
