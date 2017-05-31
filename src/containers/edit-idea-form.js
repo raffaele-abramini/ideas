@@ -24,6 +24,7 @@ class EditIdeaContainer extends Component{
 				formAction={this.props.updateIdea.bind(this, this.props.match.params.id)}
 				formTitle={'Edit idea'}
 				initialValues={this.props.initialValues}
+				label={'Save'}
 			/>
 		)
 	}

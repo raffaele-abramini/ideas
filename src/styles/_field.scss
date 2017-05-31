@@ -54,6 +54,10 @@
 
 .textarea {
 	height: 4rem;
+
+	&.mainTextarea {
+		height: 8rem;
+	}
 }
 
 .subFields {
@@ -80,7 +84,6 @@
 	color: darkred;
 	font-size: 13px;
 	margin-top: 6px;
-	font-weight: bold;
 }
 
 

@@ -13,6 +13,7 @@ class IdeaForm extends Component {
 	static propTypes = {
 		formAction : PropTypes.func.isRequired,
 		formTitle : PropTypes.string.isRequired,
+		label : PropTypes.string.isRequired,
 		redirectTo: PropTypes.string.isRequired
 	};
 
@@ -55,7 +56,7 @@ class IdeaForm extends Component {
 					<Field
 						component='textarea'
 						name="content"
-						className={field.textarea}
+						className={cl(field.textarea, field.mainTextarea)}
 						placeholder="Content here"
 					/>
 				</div>
@@ -75,7 +76,7 @@ class IdeaForm extends Component {
 						type="submit"
 						disabled={this.props.submitting}
 						className={button.button}>
-						Submit
+						{this.props.label}
 					</button>
 				</div>
 			</form>

@@ -16,6 +16,7 @@ const AddNewIdeaContainer = ({addNewIdea, ...props})=> {
 			redirectTo={config.routes.list}
 			formAction={addNewIdea}
 			formTitle={'Add new idea'}
+			label={'Create'}
 		/>
 	)
 };
