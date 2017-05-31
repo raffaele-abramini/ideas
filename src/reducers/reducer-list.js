@@ -4,7 +4,7 @@ const initialState = {
 	hideCompletedIdeas : false
 };
 
-export default function (state = initialState, action) {
+export default (state = initialState, action) => {
 	switch (action.type){
 		case TOGGLE_COMPLETED_IDEAS:
 			return {...state, hideCompletedIdeas: !state.hideCompletedIdeas};

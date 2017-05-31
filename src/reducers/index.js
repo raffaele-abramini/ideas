@@ -1,15 +1,17 @@
 import { combineReducers } from 'redux';
-import reducerIdeas from './reducer-ideas';
-import reducerList from './reducer-list';
-import reducerActiveIdea from './reducer-active-idea';
-import reducerAuth from './reducer-auth';
+import ideas from './reducer-ideas';
+import list from './reducer-list';
+import activeIdea from './reducer-active-idea';
+import auth from './reducer-auth';
+import loader from './reducer-loader';
 import {reducer as formReducer } from 'redux-form';
 
 
 export default combineReducers({
-	ideas: reducerIdeas,
-	activeIdea: reducerActiveIdea,
-	form: formReducer,
-	list : reducerList,
-	auth: reducerAuth
+	ideas,
+	activeIdea,
+	list ,
+	auth,
+	loader,
+	form: formReducer
 });

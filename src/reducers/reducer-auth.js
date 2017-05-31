@@ -1,7 +1,7 @@
 import {LOGIN, LOGOUT, AUTH_ERROR, HANDLE_AUTH} from '../actions/actions-auth'
 const initialValue= {
 	authed: false,
-	error: ''
+	error: '',
 }
 
 export default (state=initialValue, action)=>{

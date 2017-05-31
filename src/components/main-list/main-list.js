@@ -19,7 +19,10 @@ const MainList = (props)=>{
 	const ideas = props.hideCompletedIdeas
 		? Object.keys(props.ideas).reduce(filterIdea, {})
 		: props.ideas;
-    return (
+
+	if(props.loading) return <div/>
+
+	return (
 			Object.keys(ideas).length
 				? <ul className={mainList.list}>
 					{Object.keys(ideas).map((key)=>(

@@ -1,0 +1,22 @@
+.loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom:0;
+	background: white;
+	right:0;
+	display: none;
+	z-index: 20;
+	justify-content: center;
+	align-items: center;
+
+	&.isVisible {
+		display: flex;
+	}
+}
+
+
+.text {
+	color: darkslateblue;
+	font-weight: bold;
+}

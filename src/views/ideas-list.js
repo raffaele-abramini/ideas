@@ -17,6 +17,7 @@ class IdeasList extends Component {
 	}
 
 	componentWillMount(){
+		this.props.showLoader('Fetching your ideas');
 		this.props.fetchIdeas();
 	}
 
@@ -29,6 +30,7 @@ class IdeasList extends Component {
 				transitionName="slide-up"
 				transitionEnterTimeout={250}
 				transitionLeaveTimeout={250}>
+
 				<Switch location={history.location} key={history.location.key}>
 					<Route exact path={config.routes.addNewIdea} component={AddIdeaView} />
 					<Route exact path={config.routes.viewIdea()} component={IdeaView} />

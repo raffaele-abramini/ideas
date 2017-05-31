@@ -3,6 +3,7 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import config from './config'
 
 import AuthController from './containers/auth-controller';
+import Loader from './containers/loader-container';
 import IdeasListView from './containers/ideas-list-container'
 import LoginView from './views/login-view'
 import Header from './containers/header-container';
@@ -15,6 +16,7 @@ export default () => {
 	return (
 		<div className={layout.body}>
 			<AuthController/>
+			<Loader/>
 			<Header/>
 
 			<div className={layout.container}>
