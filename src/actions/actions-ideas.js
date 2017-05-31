@@ -18,7 +18,7 @@ export function fetchIdeas() {
 export function addNewIdea({title, content, sections = []}) {
 	return dispatch => Idea().push({
 		title,
-		content,
+		content: content || '',
 		sections,
 		timestamp: new Date().toISOString(),
 		isCompleted: false

@@ -39,5 +39,7 @@ function mapStateToProps({activeIdea}){
 
 
 export default connect(mapStateToProps, {updateIdea, setActiveIdea, unsetActiveIdea})(
-	reduxForm({form: 'idea-form'})(overlay(EditIdeaContainer))
+	reduxForm({
+		form: 'idea-form'
+	})(overlay(EditIdeaContainer))
 );

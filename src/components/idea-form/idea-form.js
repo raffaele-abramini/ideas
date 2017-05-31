@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cl from 'classnames';
 import { Field, FieldArray } from 'redux-form';
 import { Redirect } from 'react-router';
+import Input from '../input-with-validation/input-with-validation';
 
 import field from '../../styles/_field.scss';
 import button from '../../styles/_button.scss';
@@ -40,13 +41,12 @@ class IdeaForm extends Component {
 				<div
 					className={field.row}>
 					<Field
-						component='input'
+						component={Input}
 						type="text"
 						name="title"
 						className={cl(field.input, field.inputTitle)}
 						placeholder="Title here"
-						validate={[value => value && value.length > 3 ? undefined : 'Too short']}
-						ref={node => this.title = node}
+						validate={[value => value && value.length > 3 ? undefined : 'Title too short']}
 					/>
 				</div>
 
@@ -57,7 +57,6 @@ class IdeaForm extends Component {
 						name="content"
 						className={field.textarea}
 						placeholder="Content here"
-						ref={node => this.content = node}
 					/>
 				</div>
 
@@ -74,7 +73,7 @@ class IdeaForm extends Component {
 					className={field.section}>
 					<button
 						type="submit"
-						disabled={this.props.pristine || !this.props.valid}
+						disabled={this.props.submitting}
 						className={button.button}>
 						Submit
 					</button>
@@ -84,7 +83,6 @@ class IdeaForm extends Component {
 	}
 
 	handleSubmit({title, content, sections=[]}){
-
 		sections = sections.map(section=>{
 			section.isCompleted = !!section.isCompleted;
 			return section;
@@ -108,7 +106,7 @@ const SubFieldsHolder = ({fields=[]}) => {
 						<div
 							className={field.row}>
 							<Field
-								component='input'
+								component={Input}
 								type="text"
 								name={`${section}.title`}
 								className={cl(field.input, field.inputSubtitle)}

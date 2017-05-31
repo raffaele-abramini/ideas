@@ -46,6 +46,10 @@
 	&.inputSubtitle {
 		font-weight: bold;
 	}
+
+	&.isInvalid {
+		box-shadow: -4px 0 0 -1px darkred;
+	}
 }
 
 .textarea {
@@ -67,4 +71,13 @@
 	&:hover {
 		color: #333;
 	}
+}
+
+
+.errorMessage {
+	text-transform: uppercase;
+	color: darkred;
+	font-size: 13px;
+	margin-top: 6px;
+	font-weight: bold;
 }

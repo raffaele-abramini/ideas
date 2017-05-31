@@ -26,12 +26,13 @@
 	width: 100%;
 	padding:2rem;
 	max-width: 640px;
+	backface-visibility: hidden;
 	background: #fff;
 	top: 50%;
 	transform: translateY(-50%);
 	position: relative;
 	box-shadow: 0 3px 10px rgba(black, .3);
-	border-radius: 3px;
+	//border-radius: 3px;
 
 	> * {
 		height: 100%;
