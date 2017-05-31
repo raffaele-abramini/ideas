@@ -67,9 +67,10 @@
 	right: -1.8rem;
 	color: #999;
 	cursor: pointer;
+	transition: color .15s;
 	
 	&:hover {
-		color: #333;
+		color: slateblue;
 	}
 }
 

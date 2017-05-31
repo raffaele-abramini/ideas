@@ -141,7 +141,7 @@ const SubFieldsHolder = ({fields=[]}) => {
 					fields.push({});
 				}}
 				className={button.vanilla}
-			>Add new section</button>
+			>+ Add new section</button>
 		</div>
 	)
 };
