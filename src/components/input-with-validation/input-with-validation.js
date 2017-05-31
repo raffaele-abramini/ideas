@@ -3,16 +3,14 @@ import cl from 'classnames';
 import PropTypes from 'prop-types';
 import field from '../../styles/_field.scss';
 
-const InputWithValidation = ({meta: {...meh, touched, error, warning}, input, className, placeholder})=>{
+const InputWithValidation = ({meta: {touched, error}, input, className, ...etc})=>{
 	const classes = cl(className, {
 		[field.isInvalid] : error && touched
 	});
 
-	console.log(meh, warning);
-
 	return (
 		<div className="field-wrapper">
-			<input {...input} placeholder={placeholder} className={classes} />
+			<input {...input} className={classes} {...etc}/>
 
 			{error && touched && (
 				<div className={field.errorMessage}>
