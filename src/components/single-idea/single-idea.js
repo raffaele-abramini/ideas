@@ -23,9 +23,12 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 			</time>
 
 
-			<p className={idea.content}>
-				{content}
-			</p>
+			<div className={idea.content}>
+				{content.split('\n').map((subcontent, index)=> {
+					if(!subcontent) return;
+					return <p key={index}>{subcontent}</p>
+				})}
+			</div>
 
 			<ul className={idea.sections}>
 				{sections && sections.map((section,index) => (
