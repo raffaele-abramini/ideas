@@ -13,7 +13,7 @@ const AddNewIdeaContainer = ({addNewIdea, ...props})=> {
 	return (
 		<IdeaForm
 			{...props}
-			redirectTo={config.routes.index}
+			redirectTo={config.routes.list}
 			formAction={addNewIdea}
 			formTitle={'Add new idea'}
 		/>

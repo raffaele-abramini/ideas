@@ -1,0 +1,17 @@
+.banner {
+    margin: -1rem -1rem 0;
+    background: linear-gradient(to left top, darkslateblue 50%, slateblue 50%);
+    width: calc(100% + 2rem);
+    min-height: 30rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-attachment:fixed;
+    color: #fff;
+}
+
+.title {
+    text-align: center;
+    font-size: 150px;
+    margin-bottom: 0;
+}

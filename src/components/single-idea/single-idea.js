@@ -46,7 +46,7 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 
 				<Link
 					className={button.button}
-					to={config.routes.index}>Close</Link>
+					to={config.routes.list}>Close</Link>
 			</nav>
 		</div>
     )

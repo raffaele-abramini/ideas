@@ -15,7 +15,7 @@ const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
 				<nav className={header.nav}>
 					<Link
 						to={config.routes.addNewIdea}
-						className={cl(header.button,header.buttonPrimary, button.withIcon)}>
+						className={cl(header.button, header.buttonPrimary, button.withIcon)}>
 						<svg className={icon.icon}>
 							<use xlinkHref='#plus'/>
 						</svg>
@@ -24,8 +24,19 @@ const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
 						</span>
 					</Link>
 				</nav>
+			)
+			|| (
+				<nav className={header.nav}>
+					<Link
+						className={cl(header.button, header.buttonPrimary, button.withIcon)}
+						to={config.routes.signup}>
+						Sign up
+					</Link>
+				</nav>
 			)}
-			<h1 className={header.title}>Ideas</h1>
+			<Link className={header.title}
+				to={config.routes.home}>Ideas
+			</Link>
 
 			{authed && (
 				<nav className={cl(header.nav, header.navRight)}>
@@ -48,6 +59,14 @@ const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
 
 						Logout
 					</button>
+				</nav>
+			) || (
+				<nav className={cl(header.nav, header.navRight)}>
+					<Link
+						className={cl(header.button, header.buttonPrimary)}
+						to={config.routes.login}>
+						Login
+					</Link>
 				</nav>
 			)}
 		</header>

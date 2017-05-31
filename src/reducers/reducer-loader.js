@@ -1,7 +1,7 @@
 import {SHOW_LOADER, HIDE_LOADER} from '../actions/actions-loader';
 import {LOGIN, LOGOUT, HANDLE_AUTH} from '../actions/actions-auth';
 import {FETCH_IDEAS} from '../actions/actions-ideas';
-
+import config from '../config';
 const initialState = {
 	isVisible: false,
 	message: ''
@@ -40,10 +40,9 @@ export default (state=initialState, action)=>{
 		case FETCH_IDEAS :
 			return {...initialState}
 
-		// show if the user is not logged in;
-		// maintain state if user is successfully logged in -> it's going to be removed by fetch ideas;
+		// hide once user has been authenticated - successfully or not
 		case HANDLE_AUTH :
-			return action.payload ? state : {...initialState}
+			return {...initialState}
 	}
 
 	return state;

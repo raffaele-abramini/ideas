@@ -11,7 +11,7 @@ const AuthRoute = ({component: Component, authed, isProtected, ...rest})=>{
 			render={
 				(props) => authed === isProtected
 					? <Component {...props}/>
-					: <Redirect to={isProtected ? config.routes.login : config.routes.index}/>
+					: <Redirect to={isProtected ? config.routes.login : config.routes.list}/>
 			}/>
 	)
 };
