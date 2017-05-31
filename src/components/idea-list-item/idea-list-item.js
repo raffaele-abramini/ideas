@@ -7,7 +7,7 @@ import ideaListItem from './idea-list-item.scss';
 import button from '../../styles/_button.scss';
 import icon from '../../styles/_icon.scss';
 
-const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick})=>{
+const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick, sections})=>{
 	let classes =  cl({
 		[ideaListItem.item]	 : true,
 		[ideaListItem.isCompleted] : isCompleted
@@ -17,6 +17,8 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 		e && e.preventDefault();
 		if(window.confirm('Delete this idea?')) handleDeleteClick(id);
 	};
+
+	const completedSections = sections ? sections.filter(section => section.isCompleted) : false;
 	return (
 		<li
 			className={classes}>
@@ -32,6 +34,12 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 					{`${date.getHours()}:${date.getMinutes()} `}
 					{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
 				</time>
+
+				{sections && (
+					<div className={ideaListItem.completedSections}>
+						{completedSections.length} / {sections.length}
+					</div>
+				)}
 
 				<div className={ideaListItem.buttons}>
 					<button
