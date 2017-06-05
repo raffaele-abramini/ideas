@@ -4,6 +4,8 @@ import Hero from '../components/hero-banner/hero-banner';
 import layout from '../styles/_layout.scss';
 
 const WelcomeView = ({})=>{
+	global.document.title = 'Welcome | Ideas';
+
     return (
         <div className={layout.innerContainer}>
 			<Hero/>

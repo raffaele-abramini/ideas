@@ -4,7 +4,9 @@ import SignupForm from '../containers/signup-form-container';
 import layout from '../styles/_layout.scss';
 
 const SignupView = ({})=>{
-    return (
+	global.document.title = 'Signup | Ideas';
+
+	return (
 		<div className={layout.centralColumn}>
 			<SignupForm/>
 		</div>

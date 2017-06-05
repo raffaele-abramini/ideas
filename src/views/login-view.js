@@ -4,7 +4,10 @@ import LoginForm from '../containers/login-form-container';
 import layout from '../styles/_layout.scss';
 
 class Login extends Component {
-    render(){
+
+	render(){
+		global.document.title = 'Login | Ideas';
+
         return (
         	<div className={layout.centralColumn}>
 				<LoginForm/>
