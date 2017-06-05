@@ -14,10 +14,7 @@ module.exports = {
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
-				exclude: /node_modules/,
-				options: {
-					presets: ["es2015", "react", 'stage-2']
-				}
+				exclude: /node_modules/
 			},
 			{
 				test: /\.scss$/,
