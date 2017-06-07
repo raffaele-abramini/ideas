@@ -4,6 +4,7 @@ import config from '../../config';
 import cl from 'classnames';
 import {Link} from 'react-router-dom';
 import idea from './single-idea.scss';
+import {getFormattedDate} from '../../lib/utils';
 import button from '../../styles/_button.scss';
 import Section from '../idea-section/idea-section';
 
@@ -12,7 +13,6 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 		sections[sectionIndex].isCompleted = !sections[sectionIndex].isCompleted;
 		updateIdeaSections(sections);
 	};
-	const date = new Date(timestamp);
 
 	return (
         <div className={cl(idea.idea,{
@@ -31,8 +31,7 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 			</div>
 
 			<time className={idea.date}>
-				{`${date.getHours()}:${date.getMinutes()} `}
-				{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
+				{getFormattedDate(timestamp)}
 			</time>
 
 			<div className={idea.content}>

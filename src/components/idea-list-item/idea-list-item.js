@@ -6,6 +6,7 @@ import config from '../../config';
 import ideaListItem from './idea-list-item.scss';
 import button from '../../styles/_button.scss';
 import icon from '../../styles/_icon.scss';
+import {getFormattedDate} from '../../lib/utils';
 
 const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick, coverImage, sections})=>{
 	let classes =  cl({
@@ -13,7 +14,6 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 		[ideaListItem.isCompleted] : isCompleted,
 		[ideaListItem.withBg] : coverImage
 	});
-	const date = new Date(timestamp);
 	const confirmationForDelete = (e)=>{
 		e && e.preventDefault();
 		if(window.confirm('Delete this idea?')) handleDeleteClick(id);
@@ -37,8 +37,7 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 				</h2>
 
 				<time className={ideaListItem.date}>
-					{`${date.getHours()}:${date.getMinutes()} `}
-					{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
+					{getFormattedDate(timestamp)}
 				</time>
 
 				{sections && (
