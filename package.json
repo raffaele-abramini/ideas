@@ -8,7 +8,7 @@
     "start:dev": "node node_modules/.bin/webpack-dev-server",
     "start:prod": "npm run build && node server.bundle.js",
     "build:client": "webpack -p",
-    "build:server": "webpack --config webpack.server.config.js",
+    "build:server": "webpack --config webpack.server.config.js -p",
     "build": "npm run build:client && npm run build:server"
   },
   "author": "",

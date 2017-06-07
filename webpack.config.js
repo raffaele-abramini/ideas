@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: [
-		'./src/root.js',
+		'./src/client.js',
 		'./src/styles/style.scss'
 	],
 	output: {

@@ -23,7 +23,7 @@ class IdeasList extends Component {
 
 	render(){
 		const {history} = this.props;
-		global.document.title = 'Your ideas | Ideas';
+		if(global && global.document) global.document.title = 'Your ideas | Ideas';
 
 		return <div className={layout.innerContainer}>
 			<MainList/>

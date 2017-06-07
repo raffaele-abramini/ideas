@@ -1,41 +1,43 @@
 const fs = require('fs')
 const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 module.exports = {
-
-	entry: path.resolve(__dirname, 'server.js'),
-
-	output: {
-		filename: 'server.bundle.js'
-	},
-
-	target: 'node',
-
-	// keep node_module paths out of the bundle
-	externals: fs.readdirSync(path.resolve(__dirname, 'node_modules')).concat([
-		'react-dom/server', 'react/addons',
-	]).reduce(function (ext, mod) {
-		ext[mod] = 'commonjs ' + mod
-		return ext
-	}, {}),
-
-	node: {
-		__filename: true,
-		__dirname: true
-	},
-
-	module: {
-		loaders: [
-			{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-2' },
+	module : {
+		rules : [
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/,
+				options: {
+					presets: ["es2015", "react", 'stage-2']
+				}
+			},
 			{
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
 					use: ["css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]", "sass-loader"]
 				})
-			},
+			}
 		]
 	},
-
+	resolve: {
+		extensions: [".js", ".jsx"],
+		alias: {
+			'firebase-database': path.resolve(__dirname, '../functions/firebase-database'),
+		},
+	},
+	resolveLoader: {
+		modules: [path.resolve(__dirname, "./node_modules")],
+	},
+	target: 'node',
+	entry: './src/server.js',
+	output: {
+		filename: 'server.bundle.js',
+		path: path.resolve(__dirname, './functions/build'),
+		libraryTarget: 'commonjs2',
+	},
 	plugins : [
 		new ExtractTextPlugin('./style.css')
 	]

@@ -4,8 +4,11 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "function": "app"
       }
+    ],
+    "ignore": [
+      "index.html"
     ]
   }
 }
