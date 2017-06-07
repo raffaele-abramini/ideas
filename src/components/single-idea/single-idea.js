@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import config from '../../config';
+import cl from 'classnames';
 import {Link} from 'react-router-dom';
 import idea from './single-idea.scss';
 import button from '../../styles/_button.scss';
@@ -14,19 +15,25 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 	const date = new Date(timestamp);
 
 	return (
-        <div className={idea.idea}>
-			<h2 className={idea.title}>{title}</h2>
+        <div className={cl(idea.idea,{
+        	[idea.withBg] : coverImage
+		})}>
+			{coverImage && (
+				<div className={idea.coverImageContainer}>
+					<img
+						className={idea.coverImage}
+						src={coverImage} alt=""/>
+				</div>
+			)}
+
+			<div className={idea.titleContainer}>
+				<h2 className={idea.title}>{title}</h2>
+			</div>
 
 			<time className={idea.date}>
 				{`${date.getHours()}:${date.getMinutes()} `}
 				{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
 			</time>
-
-			{coverImage && (
-				<img
-					className={idea.coverImage}
-					src={coverImage} alt=""/>
-			)}
 
 			<div className={idea.content}>
 				{content.split('\n').map((subcontent, index)=> {
