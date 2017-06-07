@@ -21,4 +21,4 @@ const ClientApp = ()=>{
 };
 
 
-ReactDOM.render(<ClientApp/>, document.querySelector('.app'));
+ReactDOM.render(<ClientApp/>, document.getElementById('root'));

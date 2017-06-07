@@ -18,7 +18,6 @@ const config = {
 firebase.initializeApp(config);
 
 
-
 const renderApplication = (url, res, initialState) => {
 	const html = ReactDOMServer.renderToString(ServerApp({url: url, context: {}}));
 	const templatedHtml = template({ body: html, initialState: JSON.stringify({})});

@@ -2,3 +2,5 @@
 node_modules/
 public/dist
 server.bundle.js
+functions/npm-debug.log
+functions/build/
