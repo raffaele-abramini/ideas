@@ -4,6 +4,7 @@ import cl from 'classnames';
 import { Field, FieldArray } from 'redux-form';
 import { Redirect } from 'react-router';
 import Input from '../input-with-validation/input-with-validation';
+import FileUploadInput from '../file-upload-input/file-upload-input';
 
 import field from '../../styles/_field.scss';
 import button from '../../styles/_button.scss';
@@ -54,6 +55,17 @@ class IdeaForm extends Component {
 				<div
 					className={field.row}>
 					<Field
+						component={FileUploadInput}
+						name="coverImage"
+						type="hidden"
+						className={cl(field.input)}
+						placeholder="Content here"
+					/>
+				</div>
+
+				<div
+					className={field.row}>
+					<Field
 						component='textarea'
 						name="content"
 						className={cl(field.textarea, field.mainTextarea)}
@@ -83,13 +95,13 @@ class IdeaForm extends Component {
 		)
 	}
 
-	handleSubmit({title, content, sections=[]}){
+	handleSubmit({title, content, sections=[], coverImage}){
 		sections = sections.map(section=>{
 			section.isCompleted = !!section.isCompleted;
 			return section;
 		});
 
-		this.props.formAction({title, content, sections});
+		this.props.formAction({title, content, sections, coverImage});
 		this.props.reset();
 		this.setState({formSubmitted:true});
 	}

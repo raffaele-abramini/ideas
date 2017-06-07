@@ -15,11 +15,12 @@ export function fetchIdeas() {
 }
 
 
-export function addNewIdea({title, content, sections = []}) {
+export function addNewIdea({title, content, sections = [], coverImage}) {
 	return dispatch => Idea().push({
 		title,
 		content: content || '',
 		sections,
+		coverImage: coverImage || '',
 		timestamp: new Date().toISOString(),
 		isCompleted: false
 	})

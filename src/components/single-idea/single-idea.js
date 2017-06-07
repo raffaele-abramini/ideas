@@ -6,7 +6,7 @@ import idea from './single-idea.scss';
 import button from '../../styles/_button.scss';
 import Section from '../idea-section/idea-section';
 
-const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections})=>{
+const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections, coverImage})=>{
 	const updateSection = (sectionIndex)=>{
 		sections[sectionIndex].isCompleted = !sections[sectionIndex].isCompleted;
 		updateIdeaSections(sections);
@@ -22,6 +22,9 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 				{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
 			</time>
 
+			{coverImage && (
+				<img src={coverImage} alt=""/>
+			)}
 
 			<div className={idea.content}>
 				{content.split('\n').map((subcontent, index)=> {
