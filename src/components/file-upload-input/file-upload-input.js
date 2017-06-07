@@ -37,19 +37,20 @@ class FileUploadInput extends Component {
 					<div className={classes.loadingMessage}>Uploading image...</div>
 				}
 
-				{input.value && [
-					<div className={classes.image}
-						 key={1}>
-						<img src={input.value} alt=""/>
-					</div>,
-					<button key={2}
-							onClick={e=>this.removeImage(e)}
-							className={cl(button.vanilla, button.larger, classes.icon)}>
-						<svg className={icon.icon}>
-							<use xlinkHref="#bin"/>
-						</svg>
-					</button>
-				]}
+				{input.value && (
+					<div className={classes.inner}>
+						<div className={classes.image}>
+							<img src={input.value} alt=""/>
+						</div>
+						<button
+								onClick={e=>this.removeImage(e)}
+								className={cl(button.vanilla, button.larger, classes.icon)}>
+							<svg className={icon.icon}>
+								<use xlinkHref="#bin"/>
+							</svg>
+						</button>
+					</div>
+				)}
 
 				<input {...input} className={fieldClasses} {...etc}/>
 
@@ -85,12 +86,14 @@ class FileUploadInput extends Component {
     	const imageRef = this.state.imageRef
 			|| storage.refFromURL(this.props.input.value).location.path;
 
-		storage.ref(imageRef).delete().then(()=>{
+    	const remove = (err)=>{
+    		if(err)console.log(err);
 			this.props.input.onChange('');
 			this.setState({
 				imageRef: ''
 			})
-		});
+		}
+		storage.ref(imageRef).delete().then(remove).catch(remove);
 	}
 
     static propTypes = {

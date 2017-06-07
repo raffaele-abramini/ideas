@@ -16,6 +16,23 @@
 	margin-bottom:1.5rem;
 }
 
+.coverImage {
+	min-height: 5rem;
+	animation: bgloading .7s infinite;
+	margin-bottom: 1.5rem;
+
+	@keyframes bgloading {
+		0% {
+			background: slateblue;
+		}
+		50% {
+			background: darkslateblue;
+		}
+		100% {
+			background: slateblue;
+		}
+	}
+}
 
 .content {
 	margin-top: 0;

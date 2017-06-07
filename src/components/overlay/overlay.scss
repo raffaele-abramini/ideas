@@ -15,10 +15,10 @@
 	right: 0;
 	bottom: 0;
 	z-index: 10;
-	border-radius: 3px;
 }
 
 .inner {
+	border-radius: 3px;
 	max-height: 80vh;
 	overflow: scroll;
 	-webkit-overflow-scrolling: touch;

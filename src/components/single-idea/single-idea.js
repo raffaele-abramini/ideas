@@ -23,7 +23,9 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 			</time>
 
 			{coverImage && (
-				<img src={coverImage} alt=""/>
+				<img
+					className={idea.coverImage}
+					src={coverImage} alt=""/>
 			)}
 
 			<div className={idea.content}>

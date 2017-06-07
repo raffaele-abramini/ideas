@@ -1,11 +1,32 @@
 .container {
 	padding: 1rem;
 	border:1px solid #ccc;
+}
+
+.inner {
 	display: flex;
 }
 
 .image {
 	margin-right: auto;
+	min-height: 2rem;
+
+	> img {
+		display: block;
+		animation: bgloading .7s infinite;
+
+		@keyframes bgloading {
+			0% {
+				background: slateblue;
+			}
+			50% {
+				background: darkslateblue;
+			}
+			100% {
+				background: slateblue;
+			}
+		}
+	}
 }
 
 .loadingMessage {
