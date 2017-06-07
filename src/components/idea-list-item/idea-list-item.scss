@@ -6,6 +6,8 @@
 	border-radius: 3px;
 	box-shadow: 0 0 3px rgba(#000, .2);
 	transition: transform .2s, background .2s;
+	position: relative;
+	overflow: hidden;
 
 	&:hover {
 		transform: scale(1.05);
@@ -17,6 +19,31 @@
 		background: rgba(slateblue, .2);
 		transform: scale(.95);
 	}
+
+	&.withBg {
+		background: #ccc;
+	}
+}
+
+.background {
+	position: absolute;
+	z-index:0;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: .9;
+	background-size: cover;
+	
+	&:after {
+		background-image: linear-gradient(to top, rgba(white, .9) 0%, rgba(white, .9) 25%, rgba(white, 0) 80% );
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		top: 0;
+		content: ' ';
+	}
 }
 
 
@@ -25,6 +52,7 @@
 	flex-direction: column;
 	text-decoration: none;
 	width: 100%;
+	z-index: 1;
 }
 .title {
 	text-decoration: none;
@@ -32,12 +60,20 @@
 	font-size: 27px;
 	color: #000;
 	margin-bottom:.5rem;
+
+	.withBg & {
+		color: #fff;
+	}
 }
 
 .date {
 	color: #666;
 	font-size:13px;
 	margin-bottom:1rem;
+	
+	.withBg & {
+		color: #fff;
+	}
 }
 
 .buttons {

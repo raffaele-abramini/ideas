@@ -7,10 +7,11 @@ import ideaListItem from './idea-list-item.scss';
 import button from '../../styles/_button.scss';
 import icon from '../../styles/_icon.scss';
 
-const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick, sections})=>{
+const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick, coverImage, sections})=>{
 	let classes =  cl({
 		[ideaListItem.item]	 : true,
-		[ideaListItem.isCompleted] : isCompleted
+		[ideaListItem.isCompleted] : isCompleted,
+		[ideaListItem.withBg] : coverImage
 	});
 	const date = new Date(timestamp);
 	const confirmationForDelete = (e)=>{
@@ -22,6 +23,11 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 	return (
 		<li
 			className={classes}>
+			{coverImage && (
+				<div className={ideaListItem.background}
+					 style={{backgroundImage: `url(${coverImage})`}}>
+				</div>
+			)}
 			<Link
 				className={ideaListItem.link}
 				to={config.routes.viewIdea(id)}>
