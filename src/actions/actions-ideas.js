@@ -40,7 +40,7 @@ export function updateIdea(key, {title, content, sections, coverImage}) {
 
 	if(title) propsToUpdate.title = title;
 	if(content) propsToUpdate.content = content;
-	propsToUpdate.coverImage = coverImage;
+	if(typeof content !== 'undefined') propsToUpdate.coverImage = coverImage;
 	if(sections) propsToUpdate.sections = sections;
 
 	return dispatch => Idea().child(key).update(propsToUpdate);
