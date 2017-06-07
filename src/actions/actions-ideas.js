@@ -35,11 +35,12 @@ export function toggleIdea(key, previousState) {
 	return dispatch => Idea().child(key).update({isCompleted: !previousState});
 }
 
-export function updateIdea(key, {title, content, sections}) {
+export function updateIdea(key, {title, content, sections, coverImage}) {
 	const propsToUpdate = {};
 
 	if(title) propsToUpdate.title = title;
 	if(content) propsToUpdate.content = content;
+	propsToUpdate.coverImage = coverImage;
 	if(sections) propsToUpdate.sections = sections;
 
 	return dispatch => Idea().child(key).update(propsToUpdate);

@@ -27,6 +27,10 @@
 	font-size: .75rem;
 	cursor: pointer;
 
+	&.larger {
+		font-size:1.1rem;
+	}
+
 	&:hover {
 		color: slateblue;
 	}

@@ -1,0 +1,21 @@
+.container {
+	padding: 1rem;
+	border:1px solid #ccc;
+	display: flex;
+}
+
+.image {
+	margin-right: auto;
+}
+
+.loadingMessage {
+	margin-top: .5rem;
+	text-transform: uppercase;
+	font-size:.9rem;
+	color: darkslateblue;
+	flex: 0 0 100%;
+}
+
+.icon {
+	margin-left: 1rem;
+}
