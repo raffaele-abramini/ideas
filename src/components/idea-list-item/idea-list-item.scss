@@ -36,7 +36,11 @@
 	background-size: cover;
 	
 	&:after {
-		background-image: linear-gradient(to top, rgba(white, .9) 0%, rgba(white, .9) 25%, rgba(white, 0) 80% );
+		background-image: linear-gradient(to top,
+				rgba(white, .9) 0%,
+				rgba(white, .9) 20%,
+				rgba(white, 0) 80%
+		);
 		position: absolute;
 		bottom: 0;
 		right: 0;
