@@ -5,4 +5,4 @@ server.bundle.js
 functions/npm-debug.log
 functions/build/
 .DS_Store
-#public/index.html
+public/index.html
