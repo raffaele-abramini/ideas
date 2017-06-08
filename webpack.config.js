@@ -1,13 +1,14 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: [
-		'./src/client.js',
-		'./src/styles/style.scss'
+		'./src/client.js'
 	],
 	output: {
 		path: __dirname + "/public/dist",
-		filename: 'bundle.js'
+		filename: '[name].js'
 	},
 	module : {
 		rules : [
@@ -33,7 +34,21 @@ module.exports = {
 		]
 	},
 	plugins : [
-		new ExtractTextPlugin('./style.css')
+		new ExtractTextPlugin('style.css'),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'vendor',
+			minChunks: function (module) {
+				return module.context && module.context.indexOf('node_modules') !== -1;
+			}
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'manifest'
+		}),
+		new HtmlWebpackPlugin({
+			title: 'Ideas',
+			filename: '../index.html',
+			template: './src/template.html'
+		})
 	],
 	devServer: {
 		historyApiFallback: true,
