@@ -1,6 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 	entry: [
@@ -8,7 +9,7 @@ module.exports = {
 	],
 	output: {
 		path: __dirname + "/public/dist",
-		filename: '[name].js'
+		filename: '[name].[chunkhash].js'
 	},
 	module : {
 		rules : [
@@ -48,7 +49,8 @@ module.exports = {
 			title: 'Ideas',
 			filename: '../index.html',
 			template: './src/template.html'
-		})
+		}),
+		new CleanWebpackPlugin(['public'])
 	],
 	devServer: {
 		historyApiFallback: true,
