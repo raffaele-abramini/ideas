@@ -39,6 +39,6 @@ module.exports = {
 		libraryTarget: 'commonjs2',
 	},
 	plugins : [
-		new ExtractTextPlugin('./style.css')
+		new ExtractTextPlugin('../style.css')
 	]
 }

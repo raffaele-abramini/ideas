@@ -23,7 +23,7 @@ module.exports = (env)=>{
 		output: {
 			path: __dirname + "/public/dist",
 			filename: '[name].[chunkhash].js',
-			publicPath : '/'
+			publicPath : (env === 'prod' ? '/dist/' : '/')
 		},
 		module : {
 			rules : [
@@ -56,7 +56,7 @@ module.exports = (env)=>{
 			}),
 			new HtmlWebpackPlugin({
 				title: 'Ideas',
-				filename: (env === 'prod' ? '../' : '') + 'index.html',
+				filename: env === 'prod' ? '../../functions/template.html' : 'index.html',
 				template: './src/template.html'
 			}),
 			new CleanWebpackPlugin(['public'])

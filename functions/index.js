@@ -3,9 +3,11 @@ const firebase = require('firebase');
 const app = require('express')();
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
+const fs  = require('fs');
+const path  = require('path');
 
 const ServerApp = React.createFactory(require('./build/server.bundle.js').default);
-const template = require('./template');
+const template = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
 
 const config = {
 	apiKey: "AIzaSyBisHYIYLMvGj1m2UfNLSlJkUnkhYUMPTM",
@@ -20,7 +22,7 @@ firebase.initializeApp(config);
 
 const renderApplication = (url, res, initialState) => {
 	const html = ReactDOMServer.renderToString(ServerApp({url: url, context: {}}));
-	const templatedHtml = template({ body: html, initialState: JSON.stringify({})});
+	const templatedHtml = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
 	res.send(templatedHtml);
 };
 
