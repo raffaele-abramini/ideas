@@ -34,9 +34,7 @@ module.exports = (env)=>{
 				},
 				{
 					test: /\.scss$/,
-					use: ExtractTextPlugin.extract({
-						use: ["css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]", "sass-loader"]
-					})
+					use: ["style-loader","css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]", "sass-loader"]
 				},
 				{
 					test: /\.(eot|svg|ttf|woff|woff2)$/,
