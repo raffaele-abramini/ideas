@@ -1,0 +1,7 @@
+$medium-screen : 600px;
+
+@mixin media-min($screen-size) {
+	@media screen and (min-width: $screen-size){
+		@content;
+	}
+}

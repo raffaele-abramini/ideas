@@ -2,8 +2,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path')
 
 module.exports = (env)=>{
+	console.log(path.resolve(__dirname, 'src/styles/'));
 	return {
 		entry: {
 			client: './src/client.js',
@@ -63,7 +65,13 @@ module.exports = (env)=>{
 		],
 		devServer: {
 			historyApiFallback: true,
-			host: "0.0.0.0"
+			host: "0.0.0.0",
+			disableHostCheck: true
+		},
+		resolve: {
+			alias: {
+				style: path.resolve(__dirname, 'src/styles/')
+			}
 		},
 		devtool: 'source-map'
 	}

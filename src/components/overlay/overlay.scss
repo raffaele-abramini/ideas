@@ -1,3 +1,5 @@
+@import '~style/helper';
+
 .overlay {
 	&:before {
 		content: " ";
@@ -34,7 +36,8 @@
 
 .inner {
 	border-radius: 3px;
-	max-height: 80vh;
+	max-height: 100%;
+	min-height: 100%;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 	margin: auto;
@@ -43,11 +46,19 @@
 	max-width: 640px;
 	backface-visibility: hidden;
 	background: #fff;
-	top: 50%;
-	transform: translateY(-50%);
 	position: relative;
 	box-shadow: 0 3px 10px rgba(black, .3);
+	top: 0;
 	//border-radius: 3px;
+
+	@include media-min($medium-screen){
+		top: 50%;
+		transform: translateY(-50%);
+		bottom: auto;
+		max-height: none;
+		max-height: 80vh;
+		height: auto;
+	}
 
 	> * {
 		height: 100%;
@@ -55,7 +66,7 @@
 }
 
 .close {
-	position: absolute;
+	position: fixed;
 	top: 2rem;
 	right: 2rem;
 	height: auto;
