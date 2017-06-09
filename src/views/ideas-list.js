@@ -31,8 +31,7 @@ class IdeasList extends Component {
 				<MainList/>
 
 				<CssTransition
-					transitionName="slide-up"
-					transitionEnterTimeout={250}
+					transitionName="slide-out"
 					transitionLeaveTimeout={250}>
 
 					<Switch location={history.location} key={history.location.key}>

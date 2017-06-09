@@ -27,23 +27,7 @@
 	}
 
 
-
-
-
-	.slide-up {
-		&-enter {
-			> * {
-				opacity: 0;
-				transform: translateY(50%);
-			}
-		}
-		&-enter-active {
-			> * {
-				opacity: 1;
-				transform: translateY(0);
-				transition: transform 250ms, opacity 250ms;
-			}
-		}
+	.slide-out {
 		&-leave {
 			> * {
 				opacity: 1;
@@ -52,8 +36,8 @@
 		}
 		&-leave-active {
 			> * {
-				opacity: 0;
-				transform: translateY(-50%);
+				opacity: 0!important; // important to override element style
+				transform: translateY(-50%)!important; // important to override element style
 				transition: transform 250ms, opacity 250ms;
 			}
 		}
