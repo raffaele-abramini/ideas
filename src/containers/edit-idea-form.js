@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router';
 import config from '../config';
 
 import IdeaForm from '../components/idea-form/idea-form'
@@ -39,8 +40,10 @@ function mapStateToProps({activeIdea}){
 }
 
 
-export default connect(mapStateToProps, {updateIdea, setActiveIdea, unsetActiveIdea})(
-	reduxForm({
-		form: 'idea-form'
-	})(overlay(EditIdeaContainer))
+export default withRouter(
+	connect(mapStateToProps, {updateIdea, setActiveIdea, unsetActiveIdea})(
+		reduxForm({
+			form: 'idea-form'
+		})(overlay(EditIdeaContainer))
+	)
 );
