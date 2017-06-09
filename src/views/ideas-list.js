@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import config from '../config'
 import Async from 'react-code-splitting';
-import CssTransition from 'react-addons-css-transition-group';
+import CssTransition from 'react-transition-group/CSSTransitionGroup';
 
 const MainList = ()=> <Async load={import('../containers/main-list-container')}/>
 const AddIdeaView = ()=> <Async load={import('../views/add-idea-view')}/>

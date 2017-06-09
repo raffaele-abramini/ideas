@@ -29,9 +29,11 @@ class IdeaViewContainer extends Component {
 		this.props.fetchIdea(this.props.match.params.id);
 		this.updateIdeaSections = this.updateIdeaSections.bind(this);
 	}
+
 	componentWillUnmount(){
 		this.props.unsetActiveIdea();
 	}
+
 	render(){
 		const {idea, match} = this.props;
 		return (
