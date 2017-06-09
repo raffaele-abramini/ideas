@@ -5,9 +5,21 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = (env)=>{
 	return {
-		entry: [
-			'./src/client.js'
-		],
+		entry: {
+			client: './src/client.js',
+			vendor: [
+				'react',
+				'prop-types',
+				'react-dom',
+				'classnames',
+				'redux',
+				'react-redux',
+				'redux-form',
+				'redux-thunk',
+				'react-router',
+				'react-router-dom'
+			]
+		},
 		output: {
 			path: __dirname + "/public/dist",
 			filename: '[name].[chunkhash].js',
@@ -39,10 +51,7 @@ module.exports = (env)=>{
 		plugins : [
 			new ExtractTextPlugin('style.css'),
 			new webpack.optimize.CommonsChunkPlugin({
-				name: 'vendor',
-				minChunks: function (module) {
-					return module.context && module.context.indexOf('node_modules') !== -1;
-				}
+				name: 'vendor'
 			}),
 			new webpack.optimize.CommonsChunkPlugin({
 				name: 'manifest'
