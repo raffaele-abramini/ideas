@@ -4,6 +4,7 @@ import IdeasList from '../views/ideas-list';
 
 import { fetchIdeas, toggleIdea, deleteIdea } from '../actions/actions-ideas';
 import { showLoader } from '../actions/actions-loader';
+import { withRouter } from 'react-router-dom'
 
 
 const mapDispatchToProps = {
@@ -13,4 +14,4 @@ const mapDispatchToProps = {
 	showLoader
 };
 
-export default connect(null, mapDispatchToProps)(IdeasList);
+export default withRouter(connect(null, mapDispatchToProps)(IdeasList));

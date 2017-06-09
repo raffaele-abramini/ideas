@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import {setActiveIdea, unsetActiveIdea, updateActiveIdea} from '../actions/actions-active-idea';
 import { updateIdea } from '../actions/actions-ideas';
 import IdeaView from '../views/idea-view';
@@ -25,7 +26,8 @@ class IdeaViewContainer extends Component {
 	};
 
 	componentWillMount(){
-		this.props.fetchIdea(this.props.match.params.id);
+		console.log(this.props);
+		this.props.match && this.props.fetchIdea(this.props.match.params.id);
 		this.updateIdeaSections = this.updateIdeaSections.bind(this);
 	}
 	componentWillUnmount(){
@@ -50,4 +52,4 @@ class IdeaViewContainer extends Component {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(IdeaViewContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(IdeaViewContainer));

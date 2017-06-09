@@ -48,7 +48,7 @@ const MainList = (props)=>{
 };
 
 MainList.propTypes = {
-	ideas: PropTypes.object.isRequired
+	ideas: PropTypes.object
 };
 
 export default MainList;

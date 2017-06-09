@@ -1,10 +1,13 @@
 import React from 'react';
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import config from './config'
+import Async from 'react-code-splitting';
 
 import AuthController from './containers/auth-controller';
 import Loader from './containers/loader-container';
-import IdeasListView from './containers/ideas-list-container'
+
+
+// import IdeasListView from './containers/ideas-list-container'
 import LoginView from './views/login-view'
 import SignupView from './views/signup-view';
 import WelcomeView from './views/welcome-view';
@@ -13,6 +16,7 @@ import layout from './styles/_layout.scss';
 import './styles/_transitions.scss';
 import AuthRoute from './containers/auth-route';
 
+const IdeasListView = ()=> <Async load={import('./containers/ideas-list-container')}/>
 
 export default () => {
 	return (
