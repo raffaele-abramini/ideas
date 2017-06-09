@@ -34,12 +34,14 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 				{getFormattedDate(timestamp)}
 			</time>
 
-			<div className={idea.content}>
-				{content.split('\n').map((subcontent, index)=> {
-					if(!subcontent) return;
-					return <p key={index}>{subcontent}</p>
-				})}
-			</div>
+			{idea.content && (
+				<div className={idea.content}>
+					{content.split('\n').map((subcontent, index)=> {
+						if(!subcontent) return;
+						return <p key={index}>{subcontent}</p>
+					})}
+				</div>
+			)}
 
 			<ul className={idea.sections}>
 				{sections && sections.map((section,index) => (
