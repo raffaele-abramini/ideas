@@ -4,5 +4,5 @@ public/dist
 server.bundle.js
 functions/npm-debug.log
 functions/build/
+functions/template.html
 .DS_Store
-public/index.html

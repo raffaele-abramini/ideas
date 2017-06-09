@@ -12,6 +12,7 @@ module.exports = (env)=>{
 				'prop-types',
 				'react-dom',
 				'classnames',
+				'firebase',
 				'redux',
 				'react-redux',
 				'redux-form',
