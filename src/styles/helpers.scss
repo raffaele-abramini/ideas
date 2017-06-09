@@ -5,3 +5,9 @@ $medium-screen : 600px;
 		@content;
 	}
 }
+
+@mixin media-max($screen-size) {
+	@media screen and (max-width: #{$screen-size - 1}){
+		@content;
+	}
+}

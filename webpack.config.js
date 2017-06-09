@@ -70,7 +70,7 @@ module.exports = (env)=>{
 		},
 		resolve: {
 			alias: {
-				style: path.resolve(__dirname, 'src/styles/')
+				styles: path.resolve(__dirname, 'src/styles/')
 			}
 		},
 		devtool: 'source-map'

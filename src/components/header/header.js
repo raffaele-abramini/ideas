@@ -8,29 +8,26 @@ import {Link} from 'react-router-dom';
 import config from '../../config';
 
 const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
-
     return (
 		<header className={header.header}>
 			{authed && (
 				<nav className={header.nav}>
 					<Link
 						to={config.routes.addNewIdea}
-						className={cl(header.button, header.buttonPrimary, button.withIcon)}>
+						className={cl(header.button, header.buttonPrimary, button.withIcon, button.hiddenLabelOnMobile)}>
 						<svg className={icon.icon}>
 							<use xlinkHref='#plus'/>
 						</svg>
-						<span>
-							Create new
-						</span>
+						<span>Create new</span>
 					</Link>
 				</nav>
 			)
 			|| (
 				<nav className={header.nav}>
 					<Link
-						className={cl(header.button, header.buttonPrimary, button.withIcon)}
+						className={cl(header.button, header.buttonPrimary, button.withIcon, button.hiddenLabelOnMobile)}
 						to={config.routes.signup}>
-						Sign up
+						<span>Sign up</span>
 					</Link>
 				</nav>
 			)}
@@ -51,13 +48,13 @@ const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
 					</button>
 
 					<button
-						className={cl(header.button, button.withIcon)}
+						className={cl(header.button, button.withIcon, button.hiddenLabelOnMobile)}
 						onClick={logOut}>
 						<svg className={icon.icon}>
 							<use xlinkHref='#exit'/>
 						</svg>
 
-						Logout
+						<span>Logout</span>
 					</button>
 				</nav>
 			) || (

@@ -1,3 +1,5 @@
+@import "~styles/helpers";
+
 .button {
 	padding: .5rem .75rem;
 	box-shadow: none;
@@ -46,6 +48,14 @@
 	}
 	span {
 		padding-top: 4px;
+	}
+}
+
+.hiddenLabelOnMobile{
+	span  {
+		@include media-max($medium-screen){
+			display: none;
+		}
 	}
 }
 
