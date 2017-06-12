@@ -75,7 +75,7 @@ class IdeaForm extends Component {
 
 				<div
 					className={field.row}>
-					<label>Deadline - optional</label>
+					<label className={field.label}>Deadline - optional</label>
 					<Field
 						component={Input}
 						type="datetime-local"
