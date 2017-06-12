@@ -1,9 +1,20 @@
+.container {
+	position: relative;
+}
+
 .trigger {
 
 }
 
 .tab {
 	display: none;
+	position: absolute;
+	bottom: -.75rem;
+	transform: translateY(100%);
+	right: 0;
+	background: slateblue;
+	min-width: 150px;
+	padding: .5rem 1rem;
 
 	.isOpen > & {
 		display: block;

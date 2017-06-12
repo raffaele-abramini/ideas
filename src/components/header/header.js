@@ -9,7 +9,7 @@ import config from '../../config';
 
 import FilterTab from '../../containers/filter-header-tab-container';
 
-const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
+const Header = ({authed, logOut})=>{
     return (
 		<header className={header.header}>
 			{authed && (
@@ -37,19 +37,9 @@ const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
 				to={config.routes.home}>Ideas
 			</Link>
 
-			<FilterTab/>
-
 			{authed && (
 				<nav className={cl(header.nav, header.navRight)}>
-					<button
-						className={cl(header.button, button.withIcon)}
-						onClick={toggleCompletedIdeas}>
-						<svg className={icon.icon}>
-							<use xlinkHref={hideCompletedIdeas? '#toggle-on' : '#toggle-off'}/>
-						</svg>
-
-						Hide completed
-					</button>
+					<FilterTab/>
 
 					<button
 						className={cl(header.button, button.withIcon, button.hiddenLabelOnMobile)}
@@ -75,9 +65,7 @@ const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
 };
 
 Header.propTypes = {
-	authed: PropTypes.bool,
-	hideCompletedIdeas: PropTypes.bool,
-	toggleCompletedIdeas: PropTypes.func
+	authed: PropTypes.bool
 };
 
 export default Header;
