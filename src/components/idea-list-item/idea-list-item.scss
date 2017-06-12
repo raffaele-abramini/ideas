@@ -1,13 +1,19 @@
+@import '~styles/helpers';
+
 .item {
 	display: flex;
 	background: #f1f1f1;
-	height: 20rem;
+	min-height: 10rem;
 	padding: 2rem;
 	border-radius: 3px;
 	box-shadow: 0 0 3px rgba(#000, .2);
 	transition: transform .2s, background .2s;
 	position: relative;
 	overflow: hidden;
+
+	@include media-min($medium-screen){
+		height:20rem;
+	}
 
 	&:hover {
 		transform: scale(1.05);
@@ -88,9 +94,16 @@
 
 .completedSections {
 	color: rgba(black, .2);
-	font-size: 70px;
+	font-size: 30px;
 	font-weight: bold;
 	text-align: center;
 	margin-top: auto;
 	white-space: nowrap;
+	position: absolute;
+	right: 1rem;
+
+	@include media-min($medium-screen) {
+		font-size: 70px;
+		position: static;
+	}
 }
