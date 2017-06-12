@@ -1,0 +1,11 @@
+.trigger {
+
+}
+
+.tab {
+	display: none;
+
+	.isOpen > & {
+		display: block;
+	}
+}

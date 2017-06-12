@@ -7,6 +7,8 @@ import icon from '../../styles/_icon.scss'
 import {Link} from 'react-router-dom';
 import config from '../../config';
 
+import FilterTab from '../../containers/filter-header-tab-container';
+
 const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
     return (
 		<header className={header.header}>
@@ -34,6 +36,8 @@ const Header = ({hideCompletedIdeas, toggleCompletedIdeas, authed, logOut})=>{
 			<Link className={header.title}
 				to={config.routes.home}>Ideas
 			</Link>
+
+			<FilterTab/>
 
 			{authed && (
 				<nav className={cl(header.nav, header.navRight)}>
