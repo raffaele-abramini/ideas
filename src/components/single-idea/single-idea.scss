@@ -25,11 +25,41 @@
 	}
 }
 
+.expirationMessage {
+	padding: .75rem 1rem;
+	border: 1px solid;
+	border-radius: 3px;
+	margin: -.5rem auto 2rem 0;
+	font-size: 14px;
+
+	&.default {
+		color: $color-good;
+	}
+
+	&.warning {
+		color: $color-warning;
+	}
+
+	&.bad {
+		color: $color-bad;
+	}
+}
+
 .date {
 	color: #666;
 	font-size:13px;
 	margin-bottom:1.5rem;
+
+	svg {
+		margin-right: .4rem;
+	}
+
+	.deadline {
+		margin-top: .4rem;
+		display: block;
+	}
 }
+
 .coverImageContainer {
 	margin: -2rem -1.5rem 1.5rem;
 

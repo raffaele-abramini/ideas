@@ -6,8 +6,7 @@ import config from '../../config';
 import ideaListItem from './idea-list-item.scss';
 import button from '../../styles/_button.scss';
 import icon from '../../styles/_icon.scss';
-import {getFormattedDate} from '../../lib/utils';
-import {getDateMessageAlert} from '../../lib/utils';
+import {getFormattedDate, getDateMessageAlert} from '../../lib/utils';
 
 const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick, coverImage, sections, deadline})=>{
 	let classes =  cl({
@@ -56,11 +55,17 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 
 				<div className={ideaListItem.date}>
 					<time>
+						<svg className={icon.icon}>
+							<use xlinkHref="#calendar"/>
+						</svg>
 						{getFormattedDate(timestamp)}
 					</time>
 
 					{deadline &&
 						<time className={ideaListItem.deadline}>
+							<svg className={icon.icon}>
+								<use xlinkHref="#flag"/>
+							</svg>
 							{getFormattedDate(deadline)}
 						</time>
 					}

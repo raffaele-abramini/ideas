@@ -78,22 +78,23 @@
 
 .date {
 	color: #666;
-	font-size:13px;
+	font-size:12px;
 	margin-bottom:1rem;
 	display: flex;
 	justify-content:space-between;
+
+	svg {
+		margin-right: .3rem;
+	}
 	
 	.withBg & {
 		color: #fff;
 	}
 
-	.deadline {
-		font-weight: bold;
-	}
 }
 
 .expiringMessage {
-	margin-top: -.5rem;
+	margin-top: -.7rem;
 	font-size: 0.75rem;
 	margin-bottom: 0.8rem;
 	text-align: right;

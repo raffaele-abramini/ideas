@@ -4,4 +4,9 @@
 	display: inline-block;
 	fill: currentColor;
 	stroke: none;
+
+	&.x2 {
+		width: 2em;
+		height: 2em;
+	}
 }

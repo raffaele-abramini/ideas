@@ -6,14 +6,35 @@ import {Link} from 'react-router-dom';
 import idea from './single-idea.scss';
 import {getFormattedDate} from '../../lib/utils';
 import button from 'styles/_button.scss';
+import icon from 'styles/_icon.scss';
 import overlay from '../overlay/overlay.scss';
 import Section from '../idea-section/idea-section';
+import {getDateMessageAlert} from '../../lib/utils';
 
-const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections, coverImage})=>{
+
+const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections, coverImage, deadline})=>{
 	const updateSection = (sectionIndex)=>{
 		sections[sectionIndex].isCompleted = !sections[sectionIndex].isCompleted;
 		updateIdeaSections(sections);
 	};
+
+
+	const showDeadlineAlert = ()=>{
+		if(!deadline) return '';
+
+		const message = getDateMessageAlert(deadline)
+
+		if(message) {
+			return (
+				<div className={cl(
+					idea.expirationMessage,
+					idea[message.code]
+				)}>
+					{message.message}
+				</div>
+			)
+		}
+	}
 
 	return (
         <div className={cl(idea.idea,{
@@ -31,9 +52,26 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 				<h2 className={idea.title}>{title}</h2>
 			</div>
 
-			<time className={idea.date}>
-				{getFormattedDate(timestamp)}
-			</time>
+
+			<div className={idea.date}>
+				<time>
+					<svg className={icon.icon}>
+						<use xlinkHref="#calendar"/>
+					</svg>
+					Created: {getFormattedDate(timestamp)}
+				</time>
+
+				{deadline &&
+				<time className={idea.deadline}>
+					<svg className={icon.icon}>
+						<use xlinkHref="#flag"/>
+					</svg>
+					Deadline: {getFormattedDate(deadline)}
+				</time>
+				}
+			</div>
+
+			{showDeadlineAlert()}
 
 			{idea.content && (
 				<div className={idea.content}>
