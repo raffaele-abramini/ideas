@@ -13,8 +13,22 @@
 	transform: translateY(100%);
 	right: 0;
 	background: slateblue;
-	min-width: 150px;
+	min-width: 200px;
 	padding: .5rem 1rem;
+	border-radius: 0 0 3px 3px;
+	animation: slidein .15s forwards;
+
+	@keyframes slidein {
+		0% {
+			transform: translateY(80%);
+			opacity: 0;
+		}
+
+		100% {
+			transform: translateY(100%);
+			opacity: 1;
+		}
+	}
 
 	.isOpen > & {
 		display: block;
