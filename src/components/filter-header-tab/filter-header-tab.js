@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cl from 'classnames';
 import headerTab from '../header-tab/header-tab';
+import headerTabClasses from '../header-tab/header-tab.scss';
 import header from '../header/header.scss';
 import icon from 'styles/_icon.scss';
 import button from 'styles/_button.scss';
@@ -9,7 +10,7 @@ import button from 'styles/_button.scss';
 const FilterTab = ({toggleCompletedIdeas, hideCompletedIdeas, orderByDeadline, toggleOrderByDeadline})=>{
     return (
         <div>
-			<div>
+			<div className={headerTabClasses.row}>
 				<button
 					className={cl(header.button, button.withIcon)}
 					onClick={toggleCompletedIdeas}>
@@ -20,7 +21,7 @@ const FilterTab = ({toggleCompletedIdeas, hideCompletedIdeas, orderByDeadline, t
 					Hide completed
 				</button>
 			</div>
-			<div>
+			<div className={headerTabClasses.row}>
 				<button
 					className={cl(header.button, button.withIcon)}
 					onClick={toggleOrderByDeadline}>
