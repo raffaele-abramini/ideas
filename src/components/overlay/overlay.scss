@@ -70,6 +70,7 @@
 	right: 1.5rem;
 	height: auto;
 	z-index: 5;
+	min-height:0;
 
 	@include media-min($medium-screen) {
 		top: calc(10vh + 2rem);
