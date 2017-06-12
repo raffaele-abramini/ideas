@@ -5,7 +5,8 @@ import cl from 'classnames';
 import {Link} from 'react-router-dom';
 import idea from './single-idea.scss';
 import {getFormattedDate} from '../../lib/utils';
-import button from '../../styles/_button.scss';
+import button from 'styles/_button.scss';
+import overlay from '../overlay/overlay.scss';
 import Section from '../idea-section/idea-section';
 
 const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections, coverImage})=>{
@@ -52,7 +53,7 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 				))}
 			</ul>
 
-			<nav className={idea.nav}>
+			<nav className={overlay.nav}>
 				<Link
 					className={button.button}
 					to={config.routes.editIdea(id)}>Edit</Link>

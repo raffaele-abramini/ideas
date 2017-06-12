@@ -42,7 +42,7 @@
 	-webkit-overflow-scrolling: touch;
 	margin: auto;
 	width: 100%;
-	padding:2rem;
+	padding:2rem 1.5rem;
 	max-width: 640px;
 	backface-visibility: hidden;
 	background: #fff;
@@ -52,23 +52,47 @@
 	//border-radius: 3px;
 
 	@include media-min($medium-screen){
-		top: 50%;
-		transform: translateY(-50%);
+		top: 10vh;
 		bottom: auto;
-		max-height: none;
-		max-height: 80vh;
-		height: auto;
+		min-height: 0;
+		height: 80vh;
+		padding:2rem;
 	}
 
 	> * {
-		height: 100%;
+		min-height: 100%;
 	}
 }
 
 .close {
 	position: fixed;
 	top: 2rem;
-	right: 2rem;
+	right: 1.5rem;
 	height: auto;
 	z-index: 5;
+
+	@include media-min($medium-screen) {
+		top: calc(10vh + 2rem);
+		right: calc((100% - 640px) / 2 + 2rem);
+	}
+}
+
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
+	padding: 1rem 1.5rem;
+	background: linear-gradient(to top, rgba(white, 0.95) 0%,white 10%, rgba(white, 0) 100%);
+	border-radius: 0 0 3px 3px;
+	bottom:0;
+	right:0;
+	width: 100%;
+
+	@include media-min($medium-screen) {
+		width: 640px;
+		padding: 1rem 2rem;
+		right: calc((100% - 640px) / 2);
+		bottom: 10vh;
+	}
 }

@@ -6,9 +6,9 @@ import { Redirect } from 'react-router';
 import Input from '../input-with-validation/input-with-validation';
 import FileUploadInput from '../file-upload-input/file-upload-input';
 
-import field from '../../styles/_field.scss';
-import button from '../../styles/_button.scss';
-import icon from '../../styles/_icon.scss';
+import field from 'styles/_field.scss';
+import button from 'styles/_button.scss';
+import icon from 'styles/_icon.scss';
 
 class IdeaForm extends Component {
 	static propTypes = {

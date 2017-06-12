@@ -1,3 +1,5 @@
+@import '~styles/helpers';
+
 .idea {
 	display: flex;
 	flex-direction: column;
@@ -29,7 +31,12 @@
 	margin-bottom:1.5rem;
 }
 .coverImageContainer {
-	margin: -2rem -2rem 1.5rem;
+	margin: -2rem -1.5rem 1.5rem;
+
+	@include media-min($medium-screen) {
+		margin-left: -2rem;
+		margin-right: -2rem;
+	}
 }
 
 .coverImage {
@@ -61,10 +68,4 @@
 .sections {
 	padding: 0;
 	list-style: none;
-}
-
-.nav {
-	margin-top: auto;
-	display: flex;
-	justify-content: space-between;
 }
