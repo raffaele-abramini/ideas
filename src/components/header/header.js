@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cl from 'classnames';
 import header from './header.scss';
-import button from '../../styles/_button.scss'
-import icon from '../../styles/_icon.scss'
+import button from 'styles/_button.scss'
+import icon from 'styles/_icon.scss'
 import {Link} from 'react-router-dom';
 import config from '../../config';
 

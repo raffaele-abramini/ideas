@@ -5,6 +5,8 @@ import headerTab from './header-tab.scss';
 import header from '../header/header.scss';
 import iconClass from 'styles/_icon.scss';
 import button from 'styles/_button.scss';
+import u from 'styles/_utils.scss'
+
 
 const HeaderTab = (data={})=>{
 	const {icon, label} = data;
@@ -16,6 +18,7 @@ const HeaderTab = (data={})=>{
 								header.button,
 								button.withIcon,
 								headerTab.trigger,
+								u.marginRight,
 								button.hiddenLabelOnMobile
 							)}
 							onClick={props.triggerFilter}>
