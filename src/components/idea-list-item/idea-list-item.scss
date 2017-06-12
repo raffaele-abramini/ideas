@@ -80,11 +80,37 @@
 	color: #666;
 	font-size:13px;
 	margin-bottom:1rem;
+	display: flex;
+	justify-content:space-between;
 	
 	.withBg & {
 		color: #fff;
 	}
+
+	.deadline {
+		font-weight: bold;
+	}
 }
+
+.expiringMessage {
+	margin-top: -.5rem;
+	font-size: 0.75rem;
+	margin-bottom: 0.8rem;
+	text-align: right;
+
+	&.default {
+		color: $color-good;
+	}
+
+	&.warning {
+		color: $color-warning;
+	}
+
+	&.bad {
+		color: $color-bad;
+	}
+}
+
 
 .buttons {
 	margin-top: auto;

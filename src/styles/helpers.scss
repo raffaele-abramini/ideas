@@ -1,5 +1,9 @@
 $medium-screen : 600px;
 
+$color-good: #418141;
+$color-warning: #ca8f37;
+$color-bad: #852423;
+
 @mixin media-min($screen-size) {
 	@media screen and (min-width: $screen-size){
 		@content;

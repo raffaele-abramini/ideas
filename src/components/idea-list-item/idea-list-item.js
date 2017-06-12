@@ -7,8 +7,9 @@ import ideaListItem from './idea-list-item.scss';
 import button from '../../styles/_button.scss';
 import icon from '../../styles/_icon.scss';
 import {getFormattedDate} from '../../lib/utils';
+import {getDateMessageAlert} from '../../lib/utils';
 
-const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick, coverImage, sections})=>{
+const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, handleDeleteClick, coverImage, sections, deadline})=>{
 	let classes =  cl({
 		[ideaListItem.item]	 : true,
 		[ideaListItem.isCompleted] : isCompleted,
@@ -18,6 +19,23 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 		e && e.preventDefault();
 		if(window.confirm('Delete this idea?')) handleDeleteClick(id);
 	};
+
+	const showDeadlineAlert = ()=>{
+		if(!deadline) return '';
+
+		const message = getDateMessageAlert(deadline)
+
+		if(message) {
+			return (
+				<div className={cl(
+					ideaListItem.expiringMessage,
+					ideaListItem[message.code]
+				)}>
+					{message.message}
+				</div>
+			)
+		}
+	}
 
 	const completedSections = sections ? sections.filter(section => section.isCompleted) : false;
 	return (
@@ -36,9 +54,19 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 					{title}
 				</h2>
 
-				<time className={ideaListItem.date}>
-					{getFormattedDate(timestamp)}
-				</time>
+				<div className={ideaListItem.date}>
+					<time>
+						{getFormattedDate(timestamp)}
+					</time>
+
+					{deadline &&
+						<time className={ideaListItem.deadline}>
+							{getFormattedDate(deadline)}
+						</time>
+					}
+				</div>
+
+				{showDeadlineAlert()}
 
 				{sections && (
 					<div className={ideaListItem.completedSections}>

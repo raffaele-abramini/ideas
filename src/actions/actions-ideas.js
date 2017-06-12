@@ -15,14 +15,15 @@ export function fetchIdeas() {
 }
 
 
-export function addNewIdea({title, content, sections = [], coverImage}) {
+export function addNewIdea({title, content, sections = [], coverImage, deadline}) {
 	return dispatch => Idea().push({
 		title,
 		content: content || '',
 		sections,
 		coverImage: coverImage || '',
-		timestamp: new Date().toISOString(),
-		isCompleted: false
+		timestamp: new Date(deadline).toISOString(),
+		isCompleted: false,
+		deadline: deadline || null
 	})
 }
 
@@ -35,13 +36,15 @@ export function toggleIdea(key, previousState) {
 	return dispatch => Idea().child(key).update({isCompleted: !previousState});
 }
 
-export function updateIdea(key, {title, content, sections, coverImage}) {
+export function updateIdea(key, {title, content, sections, coverImage, deadline}) {
 	const propsToUpdate = {};
 
-	if(title) propsToUpdate.title = title;
-	if(content) propsToUpdate.content = content;
-	if(typeof coverImage !== 'undefined') propsToUpdate.coverImage = coverImage;
-	if(sections) propsToUpdate.sections = sections;
+	if(title) propsToUpdate.title = title
+	if(content) propsToUpdate.content = content
+	if(typeof coverImage !== 'undefined') propsToUpdate.coverImage = coverImage
+	if(sections) propsToUpdate.sections = sections
+	if(deadline) propsToUpdate.deadline = deadline
+
 
 	return dispatch => Idea().child(key).update(propsToUpdate);
 }

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router';
 import config from '../config';
-
 import IdeaForm from '../components/idea-form/idea-form'
+import {toW3CString} from '../lib/utils';
 
 import { updateIdea } from '../actions/actions-ideas';
 import { setActiveIdea, unsetActiveIdea } from '../actions/actions-active-idea';
@@ -24,7 +24,6 @@ class EditIdeaContainer extends Component{
 				redirectTo={config.routes.viewIdea(this.props.match.params.id)}
 				formAction={this.props.updateIdea.bind(this, this.props.match.params.id)}
 				formTitle={'Edit idea'}
-				initialValues={this.props.initialValues}
 				label={'Save'}
 			/>
 		)

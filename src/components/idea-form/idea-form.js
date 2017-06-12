@@ -74,6 +74,18 @@ class IdeaForm extends Component {
 				</div>
 
 				<div
+					className={field.row}>
+					<label>Deadline - optional</label>
+					<Field
+						component={Input}
+						type="datetime-local"
+						name="deadline"
+						className={cl(field.input)}
+						placeholder="Deadline dd/mm/yyyy"
+					/>
+				</div>
+
+				<div
 					className={field.section}>
 					<h5 className={field.subtitle}>Sections</h5>
 					<FieldArray name="sections"
@@ -95,13 +107,13 @@ class IdeaForm extends Component {
 		)
 	}
 
-	handleSubmit({title, content, sections=[], coverImage}){
+	handleSubmit({title, content, sections=[], coverImage, deadline}){
 		sections = sections.map(section=>{
 			section.isCompleted = !!section.isCompleted;
 			return section;
 		});
 
-		this.props.formAction({title, content, sections, coverImage});
+		this.props.formAction({title, content, sections, coverImage, deadline});
 		this.props.reset();
 		this.setState({formSubmitted:true});
 	}
