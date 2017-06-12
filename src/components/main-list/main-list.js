@@ -11,22 +11,40 @@ import layout from '../../styles/_layout.scss';
 import config from '../../config'
 import button from '../../styles/_button.scss';
 
+const _removeCompleted = (props, acc, key)=>{
+	if(!props.ideas[key].isCompleted) acc.push(key);
+	return acc;
+};
+
+const _sortByDeadline = (ideas,a,b)=> {
+	if(!ideas[a].deadline) return 1;
+	if(!ideas[b].deadline) return -1;
+
+	return ideas[a].deadline > ideas[b].deadline ? 1 : -1;
+}
+
+const filterIdeas = (props)=> {
+	let ideas = props.hideCompletedIdeas
+		? Object.keys(props.ideas).reduce((acc, key)=>_removeCompleted(props, acc, key), [])
+		: Object.keys(props.ideas);
+	console.log(props.orderByDeadline);
+
+
+	if(props.orderByDeadline) ideas = ideas.sort((a,b)=>_sortByDeadline(props.ideas,a,b));
+
+	return ideas
+}
+
 const MainList = (props)=>{
-	const filterIdea = (acc, key)=>{
-		if(!props.ideas[key].isCompleted) acc[key] = props.ideas[key];
-		return acc;
-	};
-	const ideas = props.hideCompletedIdeas
-		? Object.keys(props.ideas).reduce(filterIdea, {})
-		: props.ideas;
+	const ideas = filterIdeas(props);
 
 	if(props.loading) return <div/>
 
 	return (
-			Object.keys(ideas).length
+			ideas.length
 				? <ul className={mainList.list}>
-					{Object.keys(ideas).map((key)=>(
-						<IdeaListItem key={key} id={key} {...ideas[key]}
+					{ideas.map((key)=>(
+						<IdeaListItem key={key} id={key} {...props.ideas[key]}
 									  handleUpdateClick={props.handleUpdateClick}
 									  handleDeleteClick={props.handleDeleteClick}/>
 					))}

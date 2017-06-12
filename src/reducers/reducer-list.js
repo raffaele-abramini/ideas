@@ -1,4 +1,4 @@
-import {TOGGLE_COMPLETED_IDEAS} from '../actions/actions-list';
+import {TOGGLE_COMPLETED_IDEAS, TOGGLE_ORDER_BY_DEADLINE} from '../actions/actions-list';
 
 const getLocalItem = itemName => {
 	if(!global.localStorage) return false;
@@ -7,13 +7,16 @@ const getLocalItem = itemName => {
 }
 
 const initialState = {
-	hideCompletedIdeas : getLocalItem('hideCompletedIdeas')
+	hideCompletedIdeas : getLocalItem('hideCompletedIdeas'),
+	orderByDeadline: getLocalItem('orderByDeadline')
 };
 
 export default (state = initialState, action) => {
 	switch (action.type){
 		case TOGGLE_COMPLETED_IDEAS:
-			return {...state, hideCompletedIdeas: getLocalItem('hideCompletedIdeas')};
+			return {...state, hideCompletedIdeas: !!action.payload};
+		case TOGGLE_ORDER_BY_DEADLINE:
+			return {...state, orderByDeadline: !!action.payload};
 
 		default:
 			return state;

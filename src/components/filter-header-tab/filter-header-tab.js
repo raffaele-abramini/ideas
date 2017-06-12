@@ -6,7 +6,7 @@ import header from '../header/header.scss';
 import icon from 'styles/_icon.scss';
 import button from 'styles/_button.scss';
 
-const FilterTab = ({toggleCompletedIdeas, hideCompletedIdeas})=>{
+const FilterTab = ({toggleCompletedIdeas, hideCompletedIdeas, orderByDeadline, toggleOrderByDeadline})=>{
     return (
         <div>
 			<div>
@@ -20,13 +20,26 @@ const FilterTab = ({toggleCompletedIdeas, hideCompletedIdeas})=>{
 					Hide completed
 				</button>
 			</div>
+			<div>
+				<button
+					className={cl(header.button, button.withIcon)}
+					onClick={toggleOrderByDeadline}>
+					<svg className={icon.icon}>
+						<use xlinkHref={orderByDeadline? '#toggle-on' : '#toggle-off'}/>
+					</svg>
+
+					Order by deadline
+				</button>
+			</div>
 		</div>
     )
 };
 
 FilterTab.propTypes = {
 	hideCompletedIdeas: PropTypes.bool,
-	toggleCompletedIdeas: PropTypes.func
+	toggleCompletedIdeas: PropTypes.func,
+	orderByDeadline: PropTypes.bool,
+	toggleOrderByDeadline: PropTypes.func
 };
 
 export default headerTab({

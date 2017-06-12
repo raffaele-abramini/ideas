@@ -5,10 +5,11 @@ import MainList from '../components/main-list/main-list';
 import { fetchIdeas, toggleIdea, deleteIdea } from '../actions/actions-ideas';
 import { logOut } from '../actions/actions-auth';
 
-function mapStateToProps({ideas, list:{hideCompletedIdeas}}){
+function mapStateToProps({ideas, list:{hideCompletedIdeas, orderByDeadline}}){
 	return {
 		ideas,
-		hideCompletedIdeas
+		hideCompletedIdeas,
+		orderByDeadline
 	}
 }
 

@@ -1,17 +1,19 @@
 import {connect} from 'react-redux';
 import FilterHeaderTab from '../components/filter-header-tab/filter-header-tab';
 import {toggleFilterTab} from '../actions/actions-header';
-import {toggleCompletedIdeas} from '../actions/actions-list';
+import {toggleCompletedIdeas, toggleOrderByDeadline} from '../actions/actions-list';
 
 
-function mapStateToProps({header, list}){
+function mapStateToProps({header, list: {hideCompletedIdeas, orderByDeadline}}){
 	return {
 		isOpen: header.filterTabOpen,
-		hideCompletedIdeas: list.hideCompletedIdeas
+		hideCompletedIdeas,
+		orderByDeadline
 	}
 }
 
 export default connect(mapStateToProps, {
 	triggerFilter:toggleFilterTab,
-	toggleCompletedIdeas
+	toggleCompletedIdeas,
+	toggleOrderByDeadline
 })(FilterHeaderTab);
