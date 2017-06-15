@@ -1,0 +1,9 @@
+{
+	"name": "Ideas",
+	"short_name": "Ideas",
+	"start_url": "/ideas",
+	"display": "standalone",
+	"background_color": "#fff",
+	"description": "A container for your ideas",
+	"icons": []
+}

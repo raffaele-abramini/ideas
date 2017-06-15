@@ -46,6 +46,10 @@ module.exports = (env)=>{
 				{
 					test: /\.(gif)$/,
 					loader: 'file-loader?name=dist/[name].[ext]'
+				},
+				{
+					test: /manifest\.(json)$/,
+					loader: 'file-loader?name=../[name].[ext]'
 				}
 			]
 		},

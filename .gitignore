@@ -1,6 +1,6 @@
 .idea/
 node_modules/
-public/dist
+public/
 server.bundle.js
 functions/npm-debug.log
 functions/build/

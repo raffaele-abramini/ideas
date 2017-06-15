@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom';
 import './styles/style.scss';
+import './manifest.json';
 
 import reducer from './reducers';
 import Root from './root';
