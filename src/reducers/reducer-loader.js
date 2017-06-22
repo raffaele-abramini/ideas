@@ -1,5 +1,5 @@
 import {SHOW_LOADER, HIDE_LOADER} from '../actions/actions-loader';
-import {LOGIN, LOGOUT, HANDLE_AUTH} from '../actions/actions-auth';
+import {LOGIN, LOGOUT, HANDLE_AUTH, LOGIN_ATTEMPT, AUTH_ERROR} from '../actions/actions-auth';
 import {FETCH_IDEAS} from '../actions/actions-ideas';
 import config from '../config';
 const initialState = {
@@ -22,6 +22,13 @@ export default (state=initialState, action)=>{
 		case HIDE_LOADER:
 			return {...initialState}
 
+		// trigger from login attempt
+		case LOGIN_ATTEMPT:
+			return {
+				isVisible:true,
+				message: 'Logging you in'
+			}
+
 		// trigger from login
 		case LOGIN:
 			return {
@@ -35,6 +42,10 @@ export default (state=initialState, action)=>{
 				isVisible:true,
 				message: 'Logging you out'
 			}
+
+		// hide on auth error
+		case AUTH_ERROR :
+			return {...initialState}
 
 		// hide once ideas have been fetched
 		case FETCH_IDEAS :
