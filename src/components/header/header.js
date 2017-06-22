@@ -33,8 +33,9 @@ const Header = ({authed, logOut})=>{
 					</Link>
 				</nav>
 			)}
+
 			<Link className={header.title}
-				to={config.routes.home}>Ideas
+				to={authed ? config.routes.list : config.routes.home}>Ideas
 			</Link>
 
 			{authed && (
