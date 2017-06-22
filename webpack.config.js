@@ -50,7 +50,7 @@ module.exports = (env)=>{
 				},
 				{
 					test: /manifest\.(json)$/,
-					loader: 'file-loader?name=../[name].[ext]'
+					loader: `file-loader?name=${ env === 'prod' ? '../' : ''}[name].[ext]`
 				}
 			]
 		},
@@ -68,14 +68,9 @@ module.exports = (env)=>{
 			}),
 			new CleanWebpackPlugin(['public']),
 			new OfflinePlugin({
-				caches: {
-					main: [
-						'vendor.*.js',
-						'client.*.js',
-					]
-				},
 				externals: [
-					'/ideas'
+					'/ideas/',
+					'/'
 				],
 				ServiceWorker: {
 					navigateFallbackURL: '/ideas'
