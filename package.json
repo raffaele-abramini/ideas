@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "node node_modules/.bin/webpack-dev-server",
-    "build:client": "webpack -p --env=prod",
+    "build:client": "webpack -p --env=prod && mkdir public/assets && cp -R src/assets/icons/ public/assets/",
     "build:server": "webpack --config webpack.server.config.js -p",
     "build": "npm run build:client && npm run build:server",
     "deploy": "npm run build:client && firebase deploy"
@@ -39,6 +39,7 @@
     "draft-js": "^0.10.1",
     "firebase": "^4.1.2",
     "moment": "^2.18.1",
+    "offline-plugin": "^4.8.1",
     "prop-types": "^15.5.8",
     "react": "^15.4.2",
     "react-async-component": "^1.0.0-beta.3",

@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path')
+const OfflinePlugin = require('offline-plugin');
 
 module.exports = (env)=>{
 	console.log(path.resolve(__dirname, 'src/styles/'));
@@ -65,7 +66,26 @@ module.exports = (env)=>{
 				filename: env === 'prod' ? '../../functions/template.html' : 'index.html',
 				template: './src/template.html'
 			}),
-			new CleanWebpackPlugin(['public'])
+			new CleanWebpackPlugin(['public']),
+			new OfflinePlugin({
+				caches: {
+					main: [
+						'vendor.*.js',
+						'client.*.js',
+					]
+				},
+				externals: [
+					'/ideas'
+				],
+				ServiceWorker: {
+					navigateFallbackURL: '/ideas'
+				},
+				AppCache: {
+					FALLBACK: {
+						'/': '/ideas'
+					}
+				}
+			})
 		],
 		devServer: {
 			historyApiFallback: true,

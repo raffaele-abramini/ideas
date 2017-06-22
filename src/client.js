@@ -6,6 +6,7 @@ import thunk from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom';
 import './styles/style.scss';
 import './manifest.json';
+require('offline-plugin/runtime').install();
 
 import reducer from './reducers';
 import Root from './root';
