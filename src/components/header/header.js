@@ -27,7 +27,7 @@ const Header = ({authed, logOut})=>{
 			|| (
 				<nav className={header.nav}>
 					<Link
-						className={cl(header.button, header.buttonPrimary, button.withIcon, button.hiddenLabelOnMobile)}
+						className={cl(header.button, header.buttonPrimary, button.withIcon)}
 						to={config.routes.signup}>
 						<span>Sign up</span>
 					</Link>
