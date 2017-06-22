@@ -43,7 +43,7 @@ export function updateIdea(key, {title, content, sections, coverImage, deadline}
 	if(content) propsToUpdate.content = content
 	if(typeof coverImage !== 'undefined') propsToUpdate.coverImage = coverImage
 	if(sections) propsToUpdate.sections = sections
-	if(deadline) propsToUpdate.deadline = deadline
+	propsToUpdate.deadline = deadline || null
 
 
 	return dispatch => Idea().child(key).update(propsToUpdate);

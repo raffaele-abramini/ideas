@@ -41,10 +41,7 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
         	[idea.withBg] : coverImage
 		})}>
 			{coverImage && (
-				<div className={idea.coverImageContainer}>
-					<img
-						className={idea.coverImage}
-						src={coverImage} alt=""/>
+				<div className={idea.coverImageContainer} style={{backgroundImage:`url(${coverImage}`}}>
 				</div>
 			)}
 

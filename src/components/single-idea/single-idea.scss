@@ -62,27 +62,27 @@
 
 .coverImageContainer {
 	margin: -2rem -1.5rem 1.5rem;
+	padding-top:56%;
+	background-size:cover;
+	background-position: center top;
 
-	@include media-min($medium-screen) {
-		margin-left: -2rem;
-		margin-right: -2rem;
-	}
-}
-
-.coverImage {
-	min-height: 5rem;
 	animation: bgloading .7s infinite;
 
 	@keyframes bgloading {
 		0% {
-			background: slateblue;
+			background-color: slateblue;
 		}
 		50% {
-			background: darkslateblue;
+			background-color: darkslateblue;
 		}
 		100% {
-			background: slateblue;
+			background-color: slateblue;
 		}
+	}
+
+	@include media-min($medium-screen) {
+		margin-left: -2rem;
+		margin-right: -2rem;
 	}
 }
 
