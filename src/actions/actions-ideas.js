@@ -21,7 +21,7 @@ export function addNewIdea({title, content, sections = [], coverImage, deadline}
 		content: content || '',
 		sections,
 		coverImage: coverImage || '',
-		timestamp: new Date(deadline).toISOString(),
+		timestamp: new Date().toISOString(),
 		isCompleted: false,
 		deadline: deadline || null
 	})

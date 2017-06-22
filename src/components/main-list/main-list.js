@@ -27,8 +27,6 @@ const filterIdeas = (props)=> {
 	let ideas = props.hideCompletedIdeas
 		? Object.keys(props.ideas).reduce((acc, key)=>_removeCompleted(props, acc, key), [])
 		: Object.keys(props.ideas);
-	console.log(props.orderByDeadline);
-
 
 	if(props.orderByDeadline) ideas = ideas.sort((a,b)=>_sortByDeadline(props.ideas,a,b));
 
