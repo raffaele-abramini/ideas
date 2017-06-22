@@ -25,8 +25,8 @@ const _sortByDeadline = (ideas,a,b)=> {
 
 const filterIdeas = (props)=> {
 	let ideas = props.hideCompletedIdeas
-		? Object.keys(props.ideas).reduce((acc, key)=>_removeCompleted(props, acc, key), [])
-		: Object.keys(props.ideas);
+		? Object.keys(props.ideas).reduce((acc, key)=>_removeCompleted(props, acc, key), []).reverse()
+		: Object.keys(props.ideas).reverse();
 
 	if(props.orderByDeadline) ideas = ideas.sort((a,b)=>_sortByDeadline(props.ideas,a,b));
 
