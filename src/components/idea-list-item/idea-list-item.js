@@ -20,7 +20,7 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 	};
 
 	const showDeadlineAlert = ()=>{
-		if(!deadline) return '';
+		if(!deadline || isCompleted) return '';
 
 		const message = getDateMessageAlert(deadline)
 

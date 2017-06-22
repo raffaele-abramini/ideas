@@ -12,7 +12,7 @@ import Section from '../idea-section/idea-section';
 import {getDateMessageAlert} from '../../lib/utils';
 
 
-const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections, coverImage, deadline})=>{
+const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections, coverImage, deadline, isCompleted})=>{
 	const updateSection = (sectionIndex)=>{
 		sections[sectionIndex].isCompleted = !sections[sectionIndex].isCompleted;
 		updateIdeaSections(sections);
@@ -20,7 +20,7 @@ const SingleIdea = ({title, timestamp, content, sections, id, updateIdeaSections
 
 
 	const showDeadlineAlert = ()=>{
-		if(!deadline) return '';
+		if(!deadline || isCompleted) return '';
 
 		const message = getDateMessageAlert(deadline)
 

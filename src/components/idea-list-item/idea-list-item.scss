@@ -21,7 +21,7 @@
 	}
 
 	&.isCompleted {
-		opacity: .6;
+		opacity: .75;
 		background: rgba(slateblue, .2);
 		transform: scale(.95);
 	}
@@ -43,9 +43,9 @@
 	
 	&:after {
 		background-image: linear-gradient(to top,
-				rgba(white, .9) 0%,
-				rgba(white, .9) 20%,
-				rgba(white, 0) 80%
+				rgba(white, .8) 0%,
+				rgba(white, .8) 20%,
+				rgba(black, .2) 80%
 		);
 		position: absolute;
 		bottom: 0;
