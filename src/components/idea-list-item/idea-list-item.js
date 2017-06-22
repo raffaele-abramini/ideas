@@ -16,7 +16,7 @@ const IdeaListItem = ({isCompleted, title, id, timestamp, handleUpdateClick, han
 	});
 	const confirmationForDelete = (e)=>{
 		e && e.preventDefault();
-		if(window.confirm('Delete this idea?')) handleDeleteClick(id);
+		if(window.confirm('Delete this idea?')) handleDeleteClick(id, {coverImage});
 	};
 
 	const showDeadlineAlert = ()=>{

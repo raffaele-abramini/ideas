@@ -1,4 +1,4 @@
-import {db, auth} from '../lib/firebase';
+import {db, auth, storage} from '../lib/firebase';
 export const FETCH_IDEAS = 'FETCH_IDEAS';
 
 const Idea = () => {
@@ -27,8 +27,19 @@ export function addNewIdea({title, content, sections = [], coverImage, deadline}
 	})
 }
 
-export function deleteIdea(key) {
-	return dispatch => Idea().child(key).remove();
+export function deleteIdea(key, {coverImage}) {
+	return () => {
+		const deleteIdea = (err)=>{
+			if(err)console.log(err);
+			Idea().child(key).remove()
+		}
+		if(coverImage){
+			const imageRef = storage.refFromURL(coverImage).location.path;
+			return storage.ref(imageRef).delete().then(deleteIdea).catch(deleteIdea);
+		} else {
+			deleteIdea();
+		}
+	}
 }
 
 
