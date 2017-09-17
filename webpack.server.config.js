@@ -26,6 +26,7 @@ module.exports = {
 		extensions: [".js", ".jsx"],
 		alias: {
 			'firebase-database': path.resolve(__dirname, '../functions/firebase-database'),
+			styles: path.resolve(__dirname, 'src/styles/')
 		},
 	},
 	resolveLoader: {
