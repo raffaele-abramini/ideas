@@ -30,3 +30,22 @@
 	max-width: 100%;
 	margin: auto;
 }
+
+
+.threeColsOnTablet {
+	width:100%;
+	display: block;
+
+	@media all and (min-width: 650px) {
+		display: flex;
+
+		.paddedColumn {
+			padding: 1rem;
+			flex: 1 1 33%;
+		}
+	}
+}
+
+.paddedColumn {
+
+}

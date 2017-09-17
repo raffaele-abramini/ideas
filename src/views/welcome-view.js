@@ -9,17 +9,25 @@ const WelcomeView = ({})=>{
     return (
         <div className={layout.innerContainer}>
 			<Hero/>
-			<div className={layout.centralColumn}>
-				<h2 style={{marginTop: '3rem'}}>Get some ideas</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet in minima tempora ut veritatis? Adipisci asperiores at impedit, minima nemo nihil placeat quisquam repellat? Commodi eum illo magnam quibusdam quisquam!</p>
-				<br/>
+			<div className={layout.threeColsOnTablet} style={{margin: '2rem 0'}}>
+				<div className={layout.paddedColumn}>
+					<h2>Free todo list!</h2>
+					<p>Create a free account and store you todo list and ideas.</p>
+				</div>
 
-				<h2>Get some other ideas</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet in minima tempora ut veritatis? Adipisci asperiores at impedit, minima nemo nihil placeat quisquam repellat? Commodi eum illo magnam quibusdam quisquam!</p>
-				<br/>
+				<div className={layout.paddedColumn}>
+					<h2>PWA ready</h2>
+					<p>Check your lists everywhere and on every device you want without installing any app.</p>
+				</div>
 
-				<h2>Get some other ideas</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet in minima tempora ut veritatis? Adipisci asperiores at impedit, minima nemo nihil placeat quisquam repellat? Commodi eum illo magnam quibusdam quisquam!</p>
+				<div className={layout.paddedColumn}>
+					<h2>Enhancements on going</h2>
+					<p>New features are coming! Get automatically and for free all the treats!</p>
+				</div>
+			</div>
+			<div style={{padding : '1rem', background: 'slateblue', color: 'white'}}>
+				<h2>Important disclaimer!</h2>
+				<p>This is a free proof of concept. The data stored in here maybe deleted or seen by the dev team. Please DON'T STORE ANY SENSIBLE INFORMATION. We don't take responsibilities for data lost, theft or anything else.</p>
 			</div>
 		</div>
     )
