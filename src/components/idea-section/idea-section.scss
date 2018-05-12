@@ -12,10 +12,17 @@
 		background: #EAFFEB;
 		transform: rotate3d(0, 1, 0, 360deg);
 	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .title {
 	text-transform: uppercase;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .button {
