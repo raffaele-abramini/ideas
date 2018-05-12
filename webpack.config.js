@@ -47,20 +47,18 @@ module.exports = (env)=>{
 				{
 					test: /\.(gif)$/,
 					loader: 'file-loader?name=dist/[name].[ext]'
-				},
-				{
-					test: /manifest\.(json)$/,
-					loader: `file-loader?name=${ env === 'prod' ? '../' : ''}[name].[ext]`
 				}
 			]
 		},
-		plugins : [
-			new webpack.optimize.CommonsChunkPlugin({
-				name: 'vendor'
-			}),
-			new webpack.optimize.CommonsChunkPlugin({
-				name: 'manifest'
-			}),
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+        	vendor: {},
+					manifest: {}
+				},
+      }
+    },
+    plugins : [
 			new HtmlWebpackPlugin({
 				title: 'Ideas',
 				filename: env === 'prod' ? '../../functions/template.html' : 'index.html',
