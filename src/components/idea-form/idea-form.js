@@ -1,175 +1,176 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import cl from 'classnames';
-import { Field, FieldArray } from 'redux-form';
-import { Redirect } from 'react-router';
-import Input from '../input-with-validation/input-with-validation';
-import FileUploadInput from '../file-upload-input/file-upload-input';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import cl from 'classnames'
+import { Field, FieldArray } from 'redux-form'
+import { Redirect } from 'react-router'
+import Input from '../input-with-validation/input-with-validation'
+import FileUploadInput from '../file-upload-input/file-upload-input'
 
-import field from 'styles/_field.scss';
-import button from 'styles/_button.scss';
-import icon from 'styles/_icon.scss';
+import field from 'styles/_field.scss'
+import button from 'styles/_button.scss'
+import icon from 'styles/_icon.scss'
 
 class IdeaForm extends Component {
-	static propTypes = {
-		formAction : PropTypes.func.isRequired,
-		formTitle : PropTypes.string.isRequired,
-		label : PropTypes.string.isRequired,
-		redirectTo: PropTypes.string.isRequired
-	};
+  static propTypes = {
+    formAction: PropTypes.func.isRequired,
+    formTitle: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    redirectTo: PropTypes.string.isRequired
+  }
 
-	constructor(props){
-		super(props);
+  constructor(props) {
+    super(props)
 
-		this.state = {
-			formSubmitted: false
-		};
+    this.state = {
+      formSubmitted: false
+    }
 
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
-	render(){
-		if (this.state.formSubmitted) {
-			return (
-				<Redirect to={this.props.redirectTo}/>
-			)
-		}
+  render() {
+    if (this.state.formSubmitted) {
+      return (
+        <Redirect to={this.props.redirectTo}/>
+      )
+    }
 
-		const {formTitle} = this.props;
+    const { formTitle } = this.props
 
-		return (
-			<form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
-				<h4 className={field.title}>{formTitle}</h4>
-				<div
-					className={field.row}>
-					<Field
-						component={Input}
-						type="text"
-						name="title"
-						className={cl(field.input, field.inputTitle)}
-						placeholder="Title here"
-						validate={[value => value && value.length > 3 ? undefined : 'Title too short']}
-					/>
-				</div>
+    return (
+      <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+        <h4 className={field.title}>{formTitle}</h4>
+        <div
+          className={field.row}>
+          <Field
+            component={Input}
+            type="text"
+            name="title"
+            className={cl(field.input, field.inputTitle)}
+            placeholder="Title here"
+            validate={[value => value && value.length > 3 ? undefined : 'Title too short']}
+          />
+        </div>
 
-				<div
-					className={field.row}>
-					<Field
-						component={FileUploadInput}
-						name="coverImage"
-						type="hidden"
-						className={cl(field.input)}
-						placeholder="Content here"
-					/>
-				</div>
+        <div
+          className={field.row}>
+          <Field
+            component={FileUploadInput}
+            name="coverImage"
+            type="hidden"
+            className={cl(field.input)}
+            placeholder="Content here"
+          />
+        </div>
 
-				<div
-					className={field.row}>
-					<Field
-						component='textarea'
-						name="content"
-						className={cl(field.textarea, field.mainTextarea)}
-						placeholder="Content here"
-					/>
-				</div>
+        <div
+          className={field.row}>
+          <Field
+            component='textarea'
+            name="content"
+            className={cl(field.textarea, field.mainTextarea)}
+            placeholder="Content here"
+          />
+        </div>
 
-				<div
-					className={field.row}>
-					<label className={field.label}>Deadline - optional</label>
-					<Field
-						component={Input}
-						type="datetime-local"
-						name="deadline"
-						className={cl(field.input)}
-						placeholder="Deadline dd/mm/yyyy"
-					/>
-				</div>
+        <div
+          className={field.row}>
+          <label className={field.label}>Deadline - optional</label>
+          <Field
+            component={Input}
+            type="datetime-local"
+            name="deadline"
+            className={cl(field.input)}
+            placeholder="Deadline dd/mm/yyyy"
+          />
+        </div>
 
-				<div
-					className={field.section}>
-					<h5 className={field.subtitle}>Sections</h5>
-					<FieldArray name="sections"
-								component={SubFieldsHolder}
-								className={field.row}>
-					</FieldArray>
-				</div>
+        <div
+          className={field.section}>
+          <h5 className={field.subtitle}>Sections</h5>
+          <FieldArray name="sections"
+                      component={SubFieldsHolder}
+                      className={field.row}>
+          </FieldArray>
+        </div>
 
-				<div
-					className={field.section}>
-					<button
-						type="submit"
-						disabled={this.props.submitting}
-						className={button.button}>
-						{this.props.label}
-					</button>
-				</div>
-			</form>
-		)
-	}
+        <div
+          className={field.section}>
+          <button
+            type="submit"
+            disabled={this.props.submitting}
+            className={button.button}>
+            {this.props.label}
+          </button>
+        </div>
+      </form>
+    )
+  }
 
-	handleSubmit({title, content, sections=[], coverImage, deadline}){
-		sections = sections.map(section=>{
-			section.isCompleted = !!section.isCompleted;
-			return section;
-		});
+  handleSubmit({ title, content, sections = [], coverImage, deadline }) {
+    sections = sections.map(section => {
+      section.isCompleted = !!section.isCompleted
+      return section
+    })
 
-		this.props.formAction({title, content, sections, coverImage, deadline});
-		this.props.reset();
-		this.setState({formSubmitted:true});
-	}
+    this.props.formAction({ title, content, sections, coverImage, deadline })
+    this.props.reset()
+    this.setState({ formSubmitted: true })
+  }
 }
 
 
-const SubFieldsHolder = ({fields=[]}) => {
-	return (
-		<div className={field.subFields}>
-			{fields.map((section, index) => {
-				return	(
-					<div
-						key={index}
-						className={field.section}>
-						<div
-							className={field.row}>
-							<Field
-								component={Input}
-								type="text"
-								name={`${section}.title`}
-								className={cl(field.input, field.inputSubtitle)}
-								placeholder="Section title here"
-								validate={[value => value && value.length > 3 ? undefined : 'Too short']}
-							/>
-						</div>
+const SubFieldsHolder = ({ fields = [] }) => {
+  return (
+    <div className={field.subFields}>
+      {fields.map((section, index) => {
+        return (
+          <div
+            key={index}
+            className={field.section}>
+            <div
+              className={field.row}>
+              <Field
+                component={Input}
+                type="text"
+                name={`${section}.title`}
+                className={cl(field.input, field.inputSubtitle)}
+                placeholder="Section title here"
+                validate={[value => value && value.length > 3 ? undefined : 'Too short']}
+              />
+            </div>
 
-						<div
-							className={field.row}>
-							<Field
-								component='textarea'
-								name={`${section}.content`}
-								className={field.textarea}
-								placeholder="Section content here"
-							/>
-						</div>
+            <div
+              className={field.row}>
+              <Field
+                component='textarea'
+                name={`${section}.content`}
+                className={field.textarea}
+                placeholder="Section content here"
+              />
+            </div>
 
-						<div className={field.deleteSectionButton}
-							onClick={()=>fields.remove(index)}>
-							<svg className={icon.icon}>
-								<use xlinkHref="#bin"/>
-							</svg>
-						</div>
-					</div>
-				)
-			})}
+            <div className={field.deleteSectionButton}
+                 onClick={() => fields.remove(index)}>
+              <svg className={icon.icon}>
+                <use xlinkHref="#bin"/>
+              </svg>
+            </div>
+          </div>
+        )
+      })}
 
-			<button
-				type="button"
-				onClick={() => {
-					fields.push({});
-				}}
-				className={button.vanilla}
-			>+ Add new section</button>
-		</div>
-	)
-};
+      <button
+        type="button"
+        onClick={() => {
+          fields.push({})
+        }}
+        className={button.vanilla}
+      >+ Add new section
+      </button>
+    </div>
+  )
+}
 
 
-export default IdeaForm;
+export default IdeaForm

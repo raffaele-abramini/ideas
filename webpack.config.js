@@ -6,8 +6,8 @@ const path = require('path')
 const OfflinePlugin = require('offline-plugin');
 
 module.exports = (env)=>{
-	console.log(path.resolve(__dirname, 'src/styles/'));
 	return {
+		mode: env === 'prod' ? 'production' : 'development',
 		entry: {
 			client: './src/client.js',
 			vendor: [
