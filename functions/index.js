@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const firebase = require('firebase');
 const app = require('express')();
 const React = require('react');
-const { hydrate } = require('react-dom');
+const ReactDOMServer = require('react-dom/server');
 const fs  = require('fs');
 const path  = require('path');
 
@@ -21,7 +21,7 @@ firebase.initializeApp(config);
 
 
 const renderApplication = (url, res, initialState) => {
-	const html = hydrate(ServerApp({url: url, context: {}}));
+	const html = ReactDOMServer.renderToString(ServerApp({url: url, context: {}}));
 	const templatedHtml = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
 	res.send(templatedHtml);
 };

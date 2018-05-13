@@ -23,4 +23,4 @@ const ClientApp = ()=>{
 };
 
 
-ReactDOM.render(<ClientApp/>, document.getElementById('root'));
+ReactDOM.hydrate(<ClientApp/>, document.getElementById('root'));
