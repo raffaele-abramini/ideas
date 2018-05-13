@@ -38,12 +38,13 @@ class IdeaViewContainer extends Component {
   }
 
   render() {
-    const { idea, match, toggleCompactIdeaView, ideaCompactView } = this.props
+    const { idea, match, toggleCompactIdeaView, ideaCompactView, history } = this.props
     return (
       <div>
         {idea && (
           <IdeaView
             idea={idea}
+            history={history}
             ideaCompactView={ideaCompactView}
             id={match.params.id}
             toggleCompactIdeaView={toggleCompactIdeaView}

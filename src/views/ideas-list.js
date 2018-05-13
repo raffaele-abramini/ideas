@@ -17,12 +17,10 @@ class IdeasList extends Component {
 		super(props)
 	}
 
-	componentWillMount(){
-		this.props.showLoader('Fetching your ideas');
-		this.props.fetchIdeas();
-	}
-
 	render(){
+    this.props.showLoader('Fetching your ideas');
+    this.props.fetchIdeas();
+
 		const {history} = this.props;
 		if(global && global.document) global.document.title = 'Your ideas | Ideas';
 
