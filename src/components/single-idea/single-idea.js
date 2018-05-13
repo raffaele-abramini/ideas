@@ -11,7 +11,7 @@ import Section from '../idea-section/idea-section'
 import { getDateMessageAlert, getFormattedDate } from '../../lib/utils'
 
 
-class SingleIdea extends React.PureComponent {
+class SingleIdea extends React.Component {
   constructor() {
     super();
 
