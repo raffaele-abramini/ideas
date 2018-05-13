@@ -79,10 +79,6 @@ const SingleIdea = ({
       </div>
       {showDeadlineAlert()}
 
-      <nav onClick={() => toggleCompactIdeaView()}>
-        <button className={button.vanilla}>Toggle compact view</button>
-      </nav>
-
       {idea.content && (
         <div className={idea.content}>
           {content.split('\n').map((subcontent, index) => {
@@ -91,6 +87,11 @@ const SingleIdea = ({
           })}
         </div>
       )}
+
+
+      <nav onClick={() => toggleCompactIdeaView()}>
+        <button className={button.vanilla}>Toggle compact view</button>
+      </nav>
 
       <ul className={idea.sections}>
         {sections && sections.map((section, index) => (
