@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
+const ManifestPlugin = require('webpack-manifest-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path')
@@ -53,8 +54,7 @@ module.exports = (env)=>{
     optimization: {
       splitChunks: {
         cacheGroups: {
-        	vendor: {},
-					manifest: {}
+        	vendor: {}
 				},
       }
     },
@@ -78,7 +78,8 @@ module.exports = (env)=>{
 						'/': '/ideas'
 					}
 				}
-			})
+			}),
+			new ManifestPlugin({})
 		],
 		devServer: {
 			historyApiFallback: true,

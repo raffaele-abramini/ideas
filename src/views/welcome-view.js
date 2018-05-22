@@ -25,7 +25,8 @@ const WelcomeView = ({})=>{
 					<p>New features are coming! Get automatically and for free all the treats!</p>
 				</div>
 			</div>
-			<div style={{padding : '1rem', background: 'slateblue', color: 'white'}}>
+
+			<div style={{padding : '2rem', background: 'darkslateblue', color: 'white', margin: 'auto -1rem -1rem'}}>
 				<h2>Important disclaimer!</h2>
 				<p>This is a free proof of concept. The data stored in here maybe deleted or seen by the dev team. Please DON'T STORE ANY SENSIBLE INFORMATION. We don't take responsibilities for data lost, theft or anything else.</p>
 			</div>

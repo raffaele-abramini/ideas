@@ -43,7 +43,6 @@ class SingleIdea extends React.Component {
       isCompleted,
       toggleCompactIdeaView,
       ideaCompactView,
-      history
     } = this.props
 
     const updateSection = (sectionIndex) => {
