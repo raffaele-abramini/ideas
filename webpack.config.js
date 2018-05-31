@@ -1,10 +1,10 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
-const ManifestPlugin = require('webpack-manifest-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path')
 const OfflinePlugin = require('offline-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = (env)=>{
 	return {
@@ -59,17 +59,21 @@ module.exports = (env)=>{
       }
     },
     plugins : [
+      new CleanWebpackPlugin(['public']),
 			new HtmlWebpackPlugin({
 				title: 'Ideas',
 				filename: env === 'prod' ? '../../functions/template.html' : 'index.html',
 				template: './src/template.html'
 			}),
-			new CleanWebpackPlugin(['public']),
+      new WebpackPwaManifest({
+        "name": "Ideas",
+        "short_name": "Ideas",
+        "start_url": "/ideas",
+        "display": "standalone",
+        "background_color": "#fff",
+        "description": "A container for your ideas"
+      }),
 			new OfflinePlugin({
-				externals: [
-					'/ideas/',
-					'/'
-				],
 				ServiceWorker: {
 					navigateFallbackURL: '/ideas'
 				},
@@ -78,8 +82,7 @@ module.exports = (env)=>{
 						'/': '/ideas'
 					}
 				}
-			}),
-			new ManifestPlugin({})
+			})
 		],
 		devServer: {
 			historyApiFallback: true,
