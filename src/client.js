@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom';
 import './styles/style.scss';
-import './manifest.json';
 require('offline-plugin/runtime').install();
 
 import reducer from './reducers';

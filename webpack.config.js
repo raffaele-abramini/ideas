@@ -62,20 +62,58 @@ module.exports = (env)=>{
       new CleanWebpackPlugin(['public']),
 			new HtmlWebpackPlugin({
 				title: 'Ideas',
+				favicon: './src/assets/icons/favicon.png',
 				filename: env === 'prod' ? '../../functions/template.html' : 'index.html',
 				template: './src/template.html'
 			}),
       new WebpackPwaManifest({
-        "name": "Ideas",
-        "short_name": "Ideas",
-        "start_url": "/ideas",
-        "display": "standalone",
-        "background_color": "#fff",
-        "description": "A container for your ideas"
+        name: 'Ideas',
+        short_name: 'Ideas',
+        start_url: '/ideas',
+        display: 'standalone',
+        background_color: '#fff',
+        description: 'A container for your ideas',
+        icons: [
+          {
+            src: path.resolve('src/assets/icons/icon_72x72.png'),
+            size: 72
+          },
+          {
+            src: path.resolve('src/assets/icons/icon_96x96.png'),
+						size: 96
+          },
+          {
+            src: path.resolve('src/assets/icons/icon_128x128.png'),
+						size: 128
+          },
+          {
+            src: path.resolve('src/assets/icons/icon_144x144.png'),
+						size: 144
+          },
+          {
+            src: path.resolve('src/assets/icons/icon_152x152.png'),
+						size: 152
+          },
+          {
+            src: path.resolve('src/assets/icons/icon_192x192.png'),
+						size: 192
+          },
+          {
+            src: path.resolve('src/assets/icons/icon_384x384.png'),
+						size: 384
+          },
+          {
+            src: path.resolve('src/assets/icons/icon_512x512.png'),
+						size: 512
+          }
+				]
       }),
 			new OfflinePlugin({
+        publicPath: '/',
 				ServiceWorker: {
-					navigateFallbackURL: '/ideas'
+        	scope: '/',
+          output: '../sw.js',
+          navigateFallbackURL: '/ideas',
 				},
 				AppCache: {
 					FALLBACK: {
