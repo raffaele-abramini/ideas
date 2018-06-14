@@ -6,6 +6,7 @@ export default {
 		viewIdea: (id =':id') =>`/ideas/${id}`,
 		editIdea: (id =':id') =>`/ideas/${id}/edit`,
 		login: `/login`,
-		signup: `/signup`
+		signup: `/signup`,
+		offline: '/offline',
 	}
 }

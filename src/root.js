@@ -15,6 +15,7 @@ import Header from './containers/header-container';
 import layout from './styles/_layout.scss';
 import './styles/_transitions.scss';
 import AuthRoute from './containers/auth-route';
+import OfflineView from './views/offline-view';
 
 const IdeasListView = ()=> <Async load={import('./containers/ideas-list-container')}/>
 
@@ -28,6 +29,7 @@ export default () => {
 			<div className={layout.container}>
 				<Switch>
 					<Route exact path={config.routes.home} component={WelcomeView}/>
+					<Route path={config.routes.offline} component={OfflineView}/>
 					<AuthRoute path={config.routes.signup} component={SignupView} isProtected={false}/>
 					<AuthRoute path={config.routes.login} component={LoginView} isProtected={false}/>
 					<AuthRoute path={config.routes.list} component={IdeasListView} isProtected={true}/>
