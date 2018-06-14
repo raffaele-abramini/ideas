@@ -113,11 +113,11 @@ module.exports = (env)=>{
 				ServiceWorker: {
         	scope: '/',
           output: '../sw.js',
-          navigateFallbackURL: '/ideas',
+          navigateFallbackURL: '/offline',
 				},
 				AppCache: {
 					FALLBACK: {
-						'/': '/ideas'
+						'/': '/offline'
 					}
 				}
 			})
